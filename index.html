@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bia Nails | Luxo & Elegância</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+}
+
+body{
+    background:#000;
+    color:white;
+}
+
+/* ===== IMAGEM FIXA DE FUNDO ===== */
+.banner{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:url("ChatGPT Image 21 de fev. de 2026, 14_53_23.png") no-repeat center center;
+    background-size:cover;
+    opacity:0.35;
+    z-index:-1;
+}
+
+/* ===== BOTÃO AGENDAR ===== */
+.btn-agendar{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:linear-gradient(45deg,#d4af37,#f5d76e);
+    color:black;
+    padding:12px 20px;
+    border-radius:30px;
+    text-decoration:none;
+    font-size:14px;
+    box-shadow:0 0 15px rgba(212,175,55,0.7);
+    z-index:10;
+    transition:0.3s ease;
+}
+
+.btn-agendar:hover{
+    transform:scale(1.05);
+}
+
+/* ===== CONTEÚDO ===== */
+.container{
+    position:relative;
+    padding:120px 20px 60px 20px;
+    text-align:center;
+}
+
+/* ===== TÍTULO ===== */
+.container h1{
+    font-size:42px;
+    color:#d4af37;
+    margin-bottom:35px;
+    text-shadow:0 0 15px rgba(212,175,55,0.6);
+}
+
+/* ===== TABELA ===== */
+.table-wrapper{
+    display:flex;
+    justify-content:center;
+}
+
+table{
+    width:95%;
+    max-width:800px;
+    border-collapse:separate;
+    border-spacing:0;
+    background:rgba(0,0,0,0.7);
+    border:1px solid gold;
+    border-radius:20px;
+    overflow:hidden;
+    backdrop-filter:blur(4px);
+}
+
+th, td{
+    padding:15px;
+    border-bottom:1px solid rgba(255,215,0,0.3);
+}
+
+th{
+    background:rgba(212,175,55,0.2);
+    color:#f5d76e;
+}
+
+tr:last-child td{
+    border-bottom:none;
+}
+
+/* ===== BOTÃO PAGAR ===== */
+.pagar-btn{
+    display:inline-block;
+    background:linear-gradient(45deg,#d4af37,#f7e08a);
+    color:#000;
+    padding:10px 18px;
+    border-radius:30px;
+    text-decoration:none;
+    transition:0.3s ease;
+    box-shadow:0 0 15px rgba(212,175,55,0.5);
+}
+
+.pagar-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(212,175,55,0.9);
+}
+
+/* ===== BANNER PROMOÇÃO ===== */
+.promo-banner{
+    margin:40px auto;
+    width:95%;
+    max-width:800px;
+    background:rgba(212,175,55,0.12);
+    border:1px solid gold;
+    border-radius:25px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(212,175,55,0.25);
+    backdrop-filter:blur(4px);
+}
+
+.promo-banner h2{
+    color:#d4af37;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.promo-banner p{
+    color:white;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.promo-banner span{
+    color:gold;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#aaa;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width:768px){
+
+    .container{
+        padding-top:140px;
+    }
+
+    .container h1{
+        font-size:32px;
+    }
+
+    th, td{
+        font-size:13px;
+        padding:10px;
+    }
+
+    .btn-agendar{
+        font-size:12px;
+        padding:10px 15px;
+    }
+
+    .promo-banner h2{
+        font-size:24px;
+    }
+
+    .promo-banner p{
+        font-size:15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- IMAGEM FIXA -->
+<div class="banner"></div>
+
+<!-- BOTÃO AGENDAR -->
+<a href="https://wa.me/5531998009842" target="_blank" class="btn-agendar">
+    Agendar Atendimento
+</a>
+
+<!-- CONTEÚDO -->
+<div class="container">
+
+    <h1>Tabela de Valores</h1>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <tr>
+                <th>Procedimento</th>
+                <th>Valor</th>
+                <th>Pagamento</th>
+            </tr>
+
+            <tr>
+                <td>Gel na Fibra</td>
+                <td>R$90</td>
+                <td>
+                    <a href="https://www.mercadopago.com.br/checkout/v1/payment/redirect/fe6736ab-53ca-462b-a012-6cdf50cd23ad/payment-option-form/?source=link&preference-id=293876489-51bc261e-8e6e-4966-8586-44ec2f9d9f17"
+                    target="_blank"
+                    class="pagar-btn">
+                        Pagar
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Gel na Tips</td>
+                <td>R$85</td>
+                <td>
+                    <a href="#" class="pagar-btn">Pagar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Molde F1</td>
+                <td>R$90</td>
+                <td>
+                    <a href="#" class="pagar-btn">Pagar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Acrílico</td>
+                <td>R$90</td>
+                <td>
+                    <a href="#" class="pagar-btn">Pagar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Esmaltação em Gel</td>
+                <td>R$50</td>
+                <td>
+                    <a href="#" class="pagar-btn">Pagar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Banho de Gel</td>
+                <td>R$65</td>
+                <td>
+                    <a href="#" class="pagar-btn">Pagar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Manutenção</td>
+                <td>R$90</td>
+                <td>
+                    <a href="#" class="pagar-btn">Pagar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Manicure / Pedicure</td>
+                <td>R$20</td>
+                <td>
+                    <a href="#" class="pagar-btn">Pagar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Manicure e Pedicure</td>
+                <td>R$35</td>
+                <td>
+                    <a href="#" class="pagar-btn">Pagar</a>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- BANNER PROMOÇÃO -->
+    <div class="promo-banner">
+
+        <h2>Promoção da Semana</h2>
+
+        <p>
+            ✨ <span>Gel na Fibra + Decoração</span>
+            por apenas <span>R$69,99</span>
+        </p>
+
+        <p>
+            💅 Agende agora e garanta seu horário!
+        </p>
+
+    </div>
+
+</div>
+
+<footer>
+© 2026 Bia Nails - Luxo & Elegância
+</footer>
+
+</body>
+</html>
