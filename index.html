@@ -21,6 +21,59 @@
 body{
     background:#000;
     color:white;
+    overflow-x:hidden;
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes brilho-dourado {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.3; }
+}
+
+@keyframes float-up {
+    0% { 
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { 
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.5); }
+    50% { box-shadow: 0 0 40px rgba(212,175,55,0.9); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* ===== PARTÍCULAS DOURADAS DE FUNDO ===== */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #d4af37, #f5d76e);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(212,175,55,0.8);
+    animation: float-up linear infinite;
 }
 
 /* ===== IMAGEM FIXA DE FUNDO ===== */
@@ -34,6 +87,48 @@ body{
     background-size:cover;
     opacity:0.35;
     z-index:-1;
+}
+
+/* ===== OVERLAY BRILHO DOURADO ===== */
+.golden-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: brilho-dourado 4s ease-in-out infinite;
+}
+
+/* ===== BRILHOS LATERAIS ===== */
+.glow-left {
+    position: fixed;
+    left: -200px;
+    top: 50%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: brilho-dourado 6s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.glow-right {
+    position: fixed;
+    right: -200px;
+    bottom: 50px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: brilho-dourado 8s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* ===== BOTÃO AGENDAR ===== */
@@ -50,10 +145,12 @@ body{
     box-shadow:0 0 15px rgba(212,175,55,0.7);
     z-index:10;
     transition:0.3s ease;
+    animation: pulse-glow 2s ease-in-out infinite;
 }
 
 .btn-agendar:hover{
-    transform:scale(1.05);
+    transform:scale(1.08);
+    box-shadow: 0 0 30px rgba(212,175,55,1);
 }
 
 /* ===== CONTEÚDO ===== */
@@ -61,6 +158,7 @@ body{
     position:relative;
     padding:120px 20px 60px 20px;
     text-align:center;
+    z-index: 1;
 }
 
 /* ===== TÍTULO ===== */
@@ -68,7 +166,8 @@ body{
     font-size:42px;
     color:#d4af37;
     margin-bottom:35px;
-    text-shadow:0 0 15px rgba(212,175,55,0.6);
+    text-shadow:0 0 15px rgba(212,175,55,0.6), 0 0 30px rgba(212,175,55,0.3);
+    animation: pulse-glow 3s ease-in-out infinite;
 }
 
 /* ===== TABELA ===== */
@@ -83,10 +182,13 @@ table{
     border-collapse:separate;
     border-spacing:0;
     background:rgba(0,0,0,0.7);
-    border:1px solid gold;
+    border:2px solid;
+    border-image: linear-gradient(45deg, #d4af37, #f5d76e) 1;
     border-radius:20px;
     overflow:hidden;
     backdrop-filter:blur(4px);
+    box-shadow: 0 0 30px rgba(212,175,55,0.3);
+    animation: pulse-glow 4s ease-in-out infinite;
 }
 
 th, td{
@@ -95,8 +197,14 @@ th, td{
 }
 
 th{
-    background:rgba(212,175,55,0.2);
+    background:linear-gradient(90deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.2) 50%, rgba(212,175,55,0.1) 100%);
     color:#f5d76e;
+    text-shadow: 0 0 10px rgba(212,175,55,0.5);
+}
+
+tr:hover {
+    background: rgba(212,175,55,0.05);
+    transition: 0.3s ease;
 }
 
 tr:last-child td{
@@ -113,11 +221,17 @@ tr:last-child td{
     text-decoration:none;
     transition:0.3s ease;
     box-shadow:0 0 15px rgba(212,175,55,0.5);
+    font-weight: bold;
 }
 
 .pagar-btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 25px rgba(212,175,55,0.9);
+    transform:scale(1.08);
+    box-shadow:0 0 30px rgba(212,175,55,1);
+    text-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.pagar-btn:active {
+    transform: scale(0.95);
 }
 
 /* ===== BANNER PROMOÇÃO ===== */
@@ -126,18 +240,34 @@ tr:last-child td{
     width:95%;
     max-width:800px;
     background:rgba(212,175,55,0.12);
-    border:1px solid gold;
+    border:2px solid gold;
     border-radius:25px;
     padding:25px;
     text-align:center;
-    box-shadow:0 0 20px rgba(212,175,55,0.25);
+    box-shadow:0 0 30px rgba(212,175,55,0.4), inset 0 0 20px rgba(212,175,55,0.1);
     backdrop-filter:blur(4px);
+    animation: pulse-glow 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 3s infinite;
+    z-index: -1;
 }
 
 .promo-banner h2{
     color:#d4af37;
     font-size:30px;
     margin-bottom:15px;
+    text-shadow: 0 0 15px rgba(212,175,55,0.7);
 }
 
 .promo-banner p{
@@ -147,13 +277,17 @@ tr:last-child td{
 }
 
 .promo-banner span{
-    color:gold;
+    color:#f5d76e;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(212,175,55,0.6);
 }
 
 footer{
     text-align:center;
     padding:30px;
     color:#aaa;
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== RESPONSIVO ===== */
@@ -175,6 +309,8 @@ footer{
     .btn-agendar{
         font-size:12px;
         padding:10px 15px;
+        top: 10px;
+        right: 10px;
     }
 
     .promo-banner h2{
@@ -183,6 +319,22 @@ footer{
 
     .promo-banner p{
         font-size:15px;
+    }
+
+    .glow-left, .glow-right {
+        width: 300px;
+        height: 300px;
+        filter: blur(50px);
+    }
+}
+
+/* ===== iOS SAFE AREA ===== */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
     }
 }
 
@@ -194,6 +346,16 @@ footer{
 <!-- IMAGEM FIXA -->
 <div class="banner"></div>
 
+<!-- OVERLAY DOURADO -->
+<div class="golden-overlay"></div>
+
+<!-- BRILHOS LATERAIS -->
+<div class="glow-left"></div>
+<div class="glow-right"></div>
+
+<!-- PARTÍCULAS DOURADAS -->
+<div class="particles" id="particles"></div>
+
 <!-- BOTÃO AGENDAR -->
 <a href="https://wa.me/5531998009842" target="_blank" class="btn-agendar">
     Agendar Atendimento
@@ -202,8 +364,24 @@ footer{
 <!-- CONTEÚDO -->
 <div class="container">
 
-    <h1>Tabela de Valores</h1>
+    <h1>✨ Tabela de Valores ✨</h1>
+    
+    <!-- BANNER PROMOÇÃO -->
+    <div class="promo-banner">
 
+        <h2>✨ Promoção da Semana ✨</h2>
+
+        <p>
+            💎 <span>Gel na Fibra + Decoração</span>
+            por apenas <span>R$69,99</span>
+        </p>
+
+        <p>
+            💅 Agende agora e garanta seu horário!
+        </p>
+
+    </div>
+    
     <div class="table-wrapper">
 
         <table>
@@ -294,27 +472,47 @@ footer{
 
     </div>
 
-    <!-- BANNER PROMOÇÃO -->
-    <div class="promo-banner">
-
-        <h2>Promoção da Semana</h2>
-
-        <p>
-            ✨ <span>Gel na Fibra + Decoração</span>
-            por apenas <span>R$69,99</span>
-        </p>
-
-        <p>
-            💅 Agende agora e garanta seu horário!
-        </p>
-
-    </div>
-
 </div>
 
 <footer>
-© 2026 Bia Nails - Luxo & Elegância
+© 2026 Bia Nails - Luxo & Elegância ✨
 </footer>
+
+<script>
+// Criar partículas douradas animadas
+const particlesContainer = document.getElementById('particles');
+
+function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    const size = Math.random() * 6 + 2;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    
+    const startX = Math.random() * window.innerWidth;
+    particle.style.left = startX + 'px';
+    particle.style.bottom = '-10px';
+    
+    const duration = Math.random() * 15 + 10;
+    particle.style.animationDuration = duration + 's';
+    
+    const delay = Math.random() * 5;
+    particle.style.animationDelay = delay + 's';
+    
+    particlesContainer.appendChild(particle);
+    
+    setTimeout(() => particle.remove(), duration * 1000);
+}
+
+// Criar partículas a cada intervalo
+setInterval(createParticle, 500);
+
+// Criar partículas iniciais
+for (let i = 0; i < 10; i++) {
+    createParticle();
+}
+</script>
 
 </body>
 </html>
