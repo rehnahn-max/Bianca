@@ -46,7 +46,7 @@ body{
 
 @keyframes pulse-glow {
     0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.5); }
-    50% { box-shadow: 0 0 40px rgba(201, 162, 34, 0.9); }
+    50% { box-shadow: 0 0 40px rgba(212,175,55,0.9); }
 }
 
 @keyframes shimmer {
@@ -160,7 +160,7 @@ table{
     max-width:800px;
     border-collapse:separate;
     border-spacing:0;
-    background:rgba(0,0,0,0.7);
+    background:#000;
     border:2px solid;
     border-image: linear-gradient(45deg, #d4af37, #f5d76e) 1;
     border-radius:20px;
@@ -266,6 +266,10 @@ tr:last-child td{
     text-shadow: 0 0 10px rgba(212,175,55,0.6);
 }
 
+.promo-banner .agendar-btn {
+    margin-top: 15px;
+}
+
 /* ===== TÍTULO TABELA VALORES ===== */
 .tabela-titulo {
     color: #d4af37;
@@ -317,6 +321,11 @@ footer{
     .tabela-titulo {
         font-size: 24px;
     }
+
+    .agendar-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
 }
 
 /* ===== iOS SAFE AREA ===== */
@@ -364,6 +373,10 @@ footer{
             💅 Agende agora e garanta seu horário!
         </p>
 
+        <button class="agendar-btn" onclick="agendar('Promoção: Gel na Fibra + Decoração - R$69,99')">
+            🎁 AGENDAR PROMOÇÃO
+        </button>
+
     </div>
 
     <!-- TÍTULO TABELA -->
@@ -376,7 +389,7 @@ footer{
             <tr>
                 <th>Procedimento</th>
                 <th>Valor</th>
-                <th>Agendamento</th>
+                <th>Ação</th>
             </tr>
 
             <tr>
