@@ -1,402 +1,370 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#050816">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="format-detection" content="telephone=no">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Bia Nails | Luxo & Elegância</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
-    --gold:#d4af37;
-    --gold-light:#f5d76e;
-    --bg:#000;
-}
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Open Sans',sans-serif;
-    font-style:italic;
-    font-weight:700;
-}
-
-html{
-    scroll-behavior:smooth;
-    -webkit-text-size-adjust:100%;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    font-weight: 700;
 }
 
 body{
-    background:var(--bg);
-    color:#fff;
+    background:#000;
+    color:white;
     overflow-x:hidden;
-    min-height:100vh;
-    position:relative;
-
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    -webkit-tap-highlight-color:transparent;
 }
 
+/* ===== ANIMAÇÕES ===== */
+@keyframes brilho-dourado {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.3; }
+}
+
+@keyframes float-up {
+    0% { 
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { 
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.5); }
+    50% { box-shadow: 0 0 40px rgba(212,175,55,0.9); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* ===== PARTÍCULAS DOURADAS DE FUNDO ===== */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #d4af37, #f5d76e);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(212,175,55,0.8);
+    animation: float-up linear infinite;
+}
+
+/* ===== IMAGEM FIXA DE FUNDO ===== */
 .banner{
     position:fixed;
-    inset:0;
-
-    background:
-    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.72)),
-    url('wallpaperbackspace.png') center center/cover no-repeat;
-
-    opacity:.95;
-
-    transform:scale(1.02);
-
-    z-index:-5;
-}
-
-.banner::after{
-    content:'';
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(circle at top, rgba(212,175,55,.15), transparent 45%),
-    radial-gradient(circle at bottom, rgba(245,215,110,.08), transparent 40%);
-}
-
-canvas{
-    position:fixed;
-    inset:0;
+    top:0;
+    left:0;
     width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:-4;
+    height:100vh;
+    background:url("wallpaperbackspace.png") no-repeat center center;
+    background-size:cover;
+    opacity:0.35;
+    z-index:-1;
 }
 
-.golden-overlay{
-    position:fixed;
-    inset:0;
-
-    background:
-    radial-gradient(circle at center, rgba(212,175,55,.10), transparent 70%);
-
-    pointer-events:none;
-    z-index:-3;
-
-    animation:goldPulse 6s ease-in-out infinite;
+/* ===== OVERLAY BRILHO DOURADO ===== */
+.golden-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: brilho-dourado 4s ease-in-out infinite;
 }
 
-@keyframes goldPulse{
-
-    0%,100%{
-        opacity:.45;
-    }
-
-    50%{
-        opacity:.85;
-    }
-
+/* ===== BRILHOS LATERAIS ===== */
+.glow-left {
+    position: fixed;
+    left: -200px;
+    top: 50%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: brilho-dourado 6s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.glow-left,
-.glow-right{
-    position:fixed;
-    width:320px;
-    height:320px;
-    border-radius:50%;
-    filter:blur(55px);
-    pointer-events:none;
-    z-index:-2;
+.glow-right {
+    position: fixed;
+    right: -200px;
+    bottom: 50px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: brilho-dourado 8s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.glow-left{
-    left:-160px;
-    top:30%;
-
-    background:
-    radial-gradient(circle, rgba(212,175,55,.14), transparent 70%);
-}
-
-.glow-right{
-    right:-160px;
-    bottom:10%;
-
-    background:
-    radial-gradient(circle, rgba(245,215,110,.12), transparent 70%);
-}
-
+/* ===== CONTEÚDO ===== */
 .container{
     position:relative;
-    padding:25px 18px 70px;
+    padding:20px 20px 60px 20px;
     text-align:center;
-    z-index:2;
+    z-index: 1;
 }
 
-.promo-banner{
-    margin:35px auto;
-    width:min(95%, 820px);
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(212,175,55,.25);
-
-    border-radius:28px;
-
-    padding:28px;
-
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-
-    box-shadow:
-    0 0 25px rgba(212,175,55,.15),
-    inset 0 0 15px rgba(212,175,55,.05);
-
-    overflow:hidden;
-
-    position:relative;
+/* ===== TÍTULO ===== */
+.container h1{
+    font-size:42px;
+    color:#d4af37;
+    margin-bottom:35px;
+    text-shadow:0 0 15px rgba(212,175,55,0.6), 0 0 30px rgba(212,175,55,0.3);
+    animation: pulse-glow 3s ease-in-out infinite;
 }
 
-.promo-banner::before{
-    content:'';
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:100%;
-    height:100%;
-
-    background:
-    linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
-
-    animation:shine 5s linear infinite;
-}
-
-@keyframes shine{
-
-    100%{
-        left:100%;
-    }
-
-}
-
-.promo-banner h2{
-    color:var(--gold);
-    font-size:clamp(1.9rem,4vw,2.5rem);
-
-    margin-bottom:15px;
-
-    text-shadow:
-    0 0 10px rgba(212,175,55,.45);
-}
-
-.promo-banner p{
-    color:#fff;
-    font-size:1.1rem;
-    line-height:1.8;
-}
-
-.promo-banner span{
-    color:var(--gold-light);
-
-    text-shadow:
-    0 0 10px rgba(212,175,55,.45);
-}
-
-.tabela-titulo{
-    color:var(--gold);
-    font-size:clamp(1.8rem,4vw,2.4rem);
-
-    margin-top:40px;
-    margin-bottom:25px;
-
-    text-shadow:
-    0 0 12px rgba(212,175,55,.4);
-}
-
+/* ===== TABELA ===== */
 .table-wrapper{
     display:flex;
     justify-content:center;
+    margin-top:30px;
 }
 
 table{
-    width:min(95%, 850px);
-
+    width:95%;
+    max-width:800px;
     border-collapse:separate;
     border-spacing:0;
-
-    background:rgba(0,0,0,.75);
-
-    border:1px solid rgba(212,175,55,.25);
-
-    border-radius:26px;
-
+    background:#000;
+    border:2px solid;
+    border-image: linear-gradient(45deg, #d4af37, #f5d76e) 1;
+    border-radius:20px;
     overflow:hidden;
-
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-
-    box-shadow:
-    0 0 30px rgba(212,175,55,.12);
+    backdrop-filter:blur(4px);
+    box-shadow: 0 0 30px rgba(212,175,55,0.3);
+    animation: pulse-glow 4s ease-in-out infinite;
 }
 
-th,
-td{
-    padding:16px;
-
-    border-bottom:1px solid rgba(212,175,55,.12);
+th, td{
+    padding:15px;
+    border-bottom:1px solid rgba(255,215,0,0.3);
 }
 
 th{
-    color:var(--gold-light);
-
-    background:
-    linear-gradient(90deg,
-    rgba(212,175,55,.08),
-    rgba(212,175,55,.18),
-    rgba(212,175,55,.08));
-
-    text-shadow:
-    0 0 8px rgba(212,175,55,.3);
+    background:linear-gradient(90deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.2) 50%, rgba(212,175,55,0.1) 100%);
+    color:#f5d76e;
+    text-shadow: 0 0 10px rgba(212,175,55,0.5);
 }
 
-tr:hover{
-    background:rgba(212,175,55,.05);
-
-    transition:.25s ease;
+tr:hover {
+    background: rgba(212,175,55,0.05);
+    transition: 0.3s ease;
 }
 
 tr:last-child td{
     border-bottom:none;
 }
 
+/* ===== BOTÃO AGENDAR ===== */
 .agendar-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    min-height:46px;
-
-    background:
-    linear-gradient(45deg,var(--gold),var(--gold-light));
-
+    display:inline-block;
+    background:linear-gradient(45deg,#d4af37,#f7e08a);
     color:#000;
-
     padding:10px 18px;
-
     border-radius:30px;
-
     text-decoration:none;
-
-    transition:.25s ease;
-
-    box-shadow:
-    0 0 15px rgba(212,175,55,.28);
-
-    border:none;
-
-    cursor:pointer;
-
-    font-size:.9rem;
+    transition:0.3s ease;
+    box-shadow:0 0 15px rgba(212,175,55,0.5);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    font-weight: 700;
 }
 
 .agendar-btn:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-    0 0 24px rgba(212,175,55,.45);
+    transform:scale(1.08);
+    box-shadow:0 0 30px rgba(212,175,55,1);
+    text-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
-.agendar-btn:active{
-    transform:scale(.97);
+.agendar-btn:active {
+    transform: scale(0.95);
+}
+
+/* ===== BANNER PROMOÇÃO ===== */
+.promo-banner{
+    margin:40px auto;
+    width:95%;
+    max-width:800px;
+    background:rgba(212,175,55,0.12);
+    border:2px solid gold;
+    border-radius:25px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(212,175,55,0.4), inset 0 0 20px rgba(212,175,55,0.1);
+    backdrop-filter:blur(4px);
+    animation: pulse-glow 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 3s infinite;
+    z-index: -1;
+}
+
+.promo-banner h2{
+    color:#d4af37;
+    font-size:30px;
+    margin-bottom:15px;
+    text-shadow: 0 0 15px rgba(212,175,55,0.7);
+}
+
+.promo-banner p{
+    color:white;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.promo-banner span{
+    color:#f5d76e;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(212,175,55,0.6);
+}
+
+.promo-banner .agendar-btn {
+    margin-top: 15px;
+}
+
+/* ===== TÍTULO TABELA VALORES ===== */
+.tabela-titulo {
+    color: #d4af37;
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(212,175,55,0.6);
+    animation: pulse-glow 3s ease-in-out infinite;
 }
 
 footer{
     text-align:center;
-    padding:35px 20px;
-    color:#bfbfbf;
-    position:relative;
-    z-index:2;
-    opacity:.9;
+    padding:30px;
+    color:#aaa;
+    position: relative;
+    z-index: 1;
 }
 
-input,
-textarea,
-button{
-    font-size:16px;
-    -webkit-appearance:none;
-    outline:none;
-}
-
-@media(max-width:768px){
+/* ===== RESPONSIVO ===== */
+@media (max-width:768px){
 
     .container{
-        padding:20px 14px 60px;
+        padding-top:20px;
     }
 
-    th,
-    td{
-        font-size:12px;
-        padding:10px 8px;
+    .container h1{
+        font-size:32px;
     }
 
-    .promo-banner{
-        padding:20px;
-        border-radius:22px;
+    th, td{
+        font-size:13px;
+        padding:10px;
+    }
+
+    .promo-banner h2{
+        font-size:24px;
     }
 
     .promo-banner p{
-        font-size:.95rem;
+        font-size:15px;
     }
 
-    .agendar-btn{
-        width:100%;
-        margin-top:6px;
-        font-size:.8rem;
+    .glow-left, .glow-right {
+        width: 300px;
+        height: 300px;
+        filter: blur(50px);
     }
 
-    .glow-left,
-    .glow-right{
-        width:220px;
-        height:220px;
-        filter:blur(40px);
+    .tabela-titulo {
+        font-size: 24px;
     }
 
+    .agendar-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
 }
 
-@supports (padding:max(0px)){
-
-    body{
-        padding-left:env(safe-area-inset-left);
-        padding-right:env(safe-area-inset-right);
-        padding-top:env(safe-area-inset-top);
-        padding-bottom:env(safe-area-inset-bottom);
+/* ===== iOS SAFE AREA ===== */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
     }
-
 }
 
 </style>
 </head>
+
 <body>
 
+<!-- IMAGEM FIXA -->
 <div class="banner"></div>
+
+<!-- OVERLAY DOURADO -->
 <div class="golden-overlay"></div>
+
+<!-- BRILHOS LATERAIS -->
 <div class="glow-left"></div>
 <div class="glow-right"></div>
 
-<canvas id="particles"></canvas>
+<!-- PARTÍCULAS DOURADAS -->
+<div class="particles" id="particles"></div>
 
+<!-- CONTEÚDO -->
 <div class="container">
 
+    <!-- BANNER PROMOÇÃO -->
     <div class="promo-banner">
 
         <h2>✨ Promoção da Semana ✨</h2>
@@ -416,8 +384,9 @@ button{
 
     </div>
 
+    <!-- TÍTULO TABELA -->
     <h1 class="tabela-titulo">✨ Tabela de Valores ✨</h1>
-
+    
     <div class="table-wrapper">
 
         <table>
@@ -431,55 +400,73 @@ button{
             <tr>
                 <td>Gel na Fibra</td>
                 <td>R$90</td>
-                <td><button class="agendar-btn" onclick="agendar('Gel na Fibra - R$90')">Agendar</button></td>
+                <td>
+                    <button class="agendar-btn" onclick="agendar('Gel na Fibra - R$90')">Agendar</button>
+                </td>
             </tr>
 
             <tr>
                 <td>Gel na Tips</td>
                 <td>R$85</td>
-                <td><button class="agendar-btn" onclick="agendar('Gel na Tips - R$85')">Agendar</button></td>
+                <td>
+                    <button class="agendar-btn" onclick="agendar('Gel na Tips - R$85')">Agendar</button>
+                </td>
             </tr>
 
             <tr>
                 <td>Molde F1</td>
                 <td>R$90</td>
-                <td><button class="agendar-btn" onclick="agendar('Molde F1 - R$90')">Agendar</button></td>
+                <td>
+                    <button class="agendar-btn" onclick="agendar('Molde F1 - R$90')">Agendar</button>
+                </td>
             </tr>
 
             <tr>
                 <td>Acrílico</td>
                 <td>R$90</td>
-                <td><button class="agendar-btn" onclick="agendar('Acrílico - R$90')">Agendar</button></td>
+                <td>
+                    <button class="agendar-btn" onclick="agendar('Acrílico - R$90')">Agendar</button>
+                </td>
             </tr>
 
             <tr>
                 <td>Esmaltação em Gel</td>
                 <td>R$50</td>
-                <td><button class="agendar-btn" onclick="agendar('Esmaltação em Gel - R$50')">Agendar</button></td>
+                <td>
+                    <button class="agendar-btn" onclick="agendar('Esmaltação em Gel - R$50')">Agendar</button>
+                </td>
             </tr>
 
             <tr>
                 <td>Banho de Gel</td>
                 <td>R$65</td>
-                <td><button class="agendar-btn" onclick="agendar('Banho de Gel - R$65')">Agendar</button></td>
+                <td>
+                    <button class="agendar-btn" onclick="agendar('Banho de Gel - R$65')">Agendar</button>
+                </td>
             </tr>
 
             <tr>
                 <td>Manutenção</td>
                 <td>R$90</td>
-                <td><button class="agendar-btn" onclick="agendar('Manutenção - R$90')">Agendar</button></td>
+                <td>
+                    <button class="agendar-btn" onclick="agendar('Manutenção - R$90')">Agendar</button>
+                </td>
             </tr>
 
             <tr>
                 <td>Manicure / Pedicure</td>
                 <td>R$20</td>
-                <td><button class="agendar-btn" onclick="agendar('Manicure / Pedicure - R$20')">Agendar</button></td>
+                <td>
+                    <button class="agendar-btn" onclick="agendar('Manicure / Pedicure - R$20')">Agendar</button>
+                </td>
             </tr>
 
             <tr>
                 <td>Manicure e Pedicure</td>
                 <td>R$35</td>
-                <td><button class="agendar-btn" onclick="agendar('Manicure e Pedicure - R$35')">Agendar</button></td>
+                <td>
+                    <button class="agendar-btn" onclick="agendar('Manicure e Pedicure - R$35')">Agendar</button>
+                </td>
             </tr>
 
         </table>
@@ -493,74 +480,47 @@ button{
 </footer>
 
 <script>
-
-function agendar(servico){
-
+// Função para enviar mensagem WhatsApp
+function agendar(servico) {
     const numeroWhatsApp = '5531998009842';
-
     const mensagem = `Olá! Gostaria de agendar: ${servico}`;
-
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-
     window.open(urlWhatsApp, '_blank');
 }
 
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
+// Criar partículas douradas animadas
+const particlesContainer = document.getElementById('particles');
 
-function resize(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    const size = Math.random() * 6 + 2;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    
+    const startX = Math.random() * window.innerWidth;
+    particle.style.left = startX + 'px';
+    particle.style.bottom = '-10px';
+    
+    const duration = Math.random() * 15 + 10;
+    particle.style.animationDuration = duration + 's';
+    
+    const delay = Math.random() * 5;
+    particle.style.animationDelay = delay + 's';
+    
+    particlesContainer.appendChild(particle);
+    
+    setTimeout(() => particle.remove(), duration * 1000);
 }
 
-resize();
-window.addEventListener('resize', resize);
+// Criar partículas a cada intervalo
+setInterval(createParticle, 500);
 
-const particles = [];
-const totalParticles = window.innerWidth < 768 ? 35 : 65;
-
-for(let i = 0; i < totalParticles; i++){
-
-    particles.push({
-        x:Math.random() * canvas.width,
-        y:Math.random() * canvas.height,
-        radius:Math.random() * 2.5,
-        speedX:(Math.random() - 0.5) * 0.18,
-        speedY:(Math.random() - 0.5) * 0.18,
-        opacity:Math.random() * 0.7
-    });
-
+// Criar partículas iniciais
+for (let i = 0; i < 10; i++) {
+    createParticle();
 }
-
-function animate(){
-
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    particles.forEach(p => {
-
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-        if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-        if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-
-        ctx.fillStyle = `rgba(212,175,55,${p.opacity})`;
-
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#d4af37';
-
-        ctx.fill();
-
-    });
-
-    requestAnimationFrame(animate);
-}
-
-animate();
-
 </script>
 
 </body>
