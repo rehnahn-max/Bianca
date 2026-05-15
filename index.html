@@ -46,7 +46,7 @@ body{
 
 @keyframes pulse-glow {
     0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.5); }
-    50% { box-shadow: 0 0 40px rgba(212,175,55,0.9); }
+    50% { box-shadow: 0 0 40px rgba(201, 162, 34, 0.9); }
 }
 
 @keyframes shimmer {
@@ -131,32 +131,10 @@ body{
     pointer-events: none;
 }
 
-/* ===== BOTÃO AGENDAR ===== */
-.btn-agendar{
-    position:fixed;
-    top:20px;
-    right:20px;
-    background:linear-gradient(45deg,#d4af37,#f5d76e);
-    color:black;
-    padding:12px 20px;
-    border-radius:30px;
-    text-decoration:none;
-    font-size:14px;
-    box-shadow:0 0 15px rgba(212,175,55,0.7);
-    z-index:10;
-    transition:0.3s ease;
-    animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.btn-agendar:hover{
-    transform:scale(1.08);
-    box-shadow: 0 0 30px rgba(212,175,55,1);
-}
-
 /* ===== CONTEÚDO ===== */
 .container{
     position:relative;
-    padding:120px 20px 60px 20px;
+    padding:20px 20px 60px 20px;
     text-align:center;
     z-index: 1;
 }
@@ -174,6 +152,7 @@ body{
 .table-wrapper{
     display:flex;
     justify-content:center;
+    margin-top:30px;
 }
 
 table{
@@ -211,8 +190,8 @@ tr:last-child td{
     border-bottom:none;
 }
 
-/* ===== BOTÃO PAGAR ===== */
-.pagar-btn{
+/* ===== BOTÃO AGENDAR ===== */
+.agendar-btn{
     display:inline-block;
     background:linear-gradient(45deg,#d4af37,#f7e08a);
     color:#000;
@@ -222,15 +201,20 @@ tr:last-child td{
     transition:0.3s ease;
     box-shadow:0 0 15px rgba(212,175,55,0.5);
     font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    font-weight: 700;
 }
 
-.pagar-btn:hover{
+.agendar-btn:hover{
     transform:scale(1.08);
     box-shadow:0 0 30px rgba(212,175,55,1);
     text-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
-.pagar-btn:active {
+.agendar-btn:active {
     transform: scale(0.95);
 }
 
@@ -282,6 +266,16 @@ tr:last-child td{
     text-shadow: 0 0 10px rgba(212,175,55,0.6);
 }
 
+/* ===== TÍTULO TABELA VALORES ===== */
+.tabela-titulo {
+    color: #d4af37;
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(212,175,55,0.6);
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
 footer{
     text-align:center;
     padding:30px;
@@ -294,7 +288,7 @@ footer{
 @media (max-width:768px){
 
     .container{
-        padding-top:140px;
+        padding-top:20px;
     }
 
     .container h1{
@@ -304,13 +298,6 @@ footer{
     th, td{
         font-size:13px;
         padding:10px;
-    }
-
-    .btn-agendar{
-        font-size:12px;
-        padding:10px 15px;
-        top: 10px;
-        right: 10px;
     }
 
     .promo-banner h2{
@@ -325,6 +312,10 @@ footer{
         width: 300px;
         height: 300px;
         filter: blur(50px);
+    }
+
+    .tabela-titulo {
+        font-size: 24px;
     }
 }
 
@@ -356,16 +347,9 @@ footer{
 <!-- PARTÍCULAS DOURADAS -->
 <div class="particles" id="particles"></div>
 
-<!-- BOTÃO AGENDAR -->
-<a href="https://wa.me/5531998009842" target="_blank" class="btn-agendar">
-    Agendar Atendimento
-</a>
-
 <!-- CONTEÚDO -->
 <div class="container">
 
-    <h1>✨ Tabela de Valores ✨</h1>
-    
     <!-- BANNER PROMOÇÃO -->
     <div class="promo-banner">
 
@@ -381,6 +365,9 @@ footer{
         </p>
 
     </div>
+
+    <!-- TÍTULO TABELA -->
+    <h1 class="tabela-titulo">✨ Tabela de Valores ✨</h1>
     
     <div class="table-wrapper">
 
@@ -389,18 +376,14 @@ footer{
             <tr>
                 <th>Procedimento</th>
                 <th>Valor</th>
-                <th>Pagamento</th>
+                <th>Agendamento</th>
             </tr>
 
             <tr>
                 <td>Gel na Fibra</td>
                 <td>R$90</td>
                 <td>
-                    <a href="https://www.mercadopago.com.br/checkout/v1/payment/redirect/fe6736ab-53ca-462b-a012-6cdf50cd23ad/payment-option-form/?source=link&preference-id=293876489-51bc261e-8e6e-4966-8586-44ec2f9d9f17"
-                    target="_blank"
-                    class="pagar-btn">
-                        Pagar
-                    </a>
+                    <button class="agendar-btn" onclick="agendar('Gel na Fibra - R$90')">Agendar</button>
                 </td>
             </tr>
 
@@ -408,7 +391,7 @@ footer{
                 <td>Gel na Tips</td>
                 <td>R$85</td>
                 <td>
-                    <a href="#" class="pagar-btn">Pagar</a>
+                    <button class="agendar-btn" onclick="agendar('Gel na Tips - R$85')">Agendar</button>
                 </td>
             </tr>
 
@@ -416,7 +399,7 @@ footer{
                 <td>Molde F1</td>
                 <td>R$90</td>
                 <td>
-                    <a href="#" class="pagar-btn">Pagar</a>
+                    <button class="agendar-btn" onclick="agendar('Molde F1 - R$90')">Agendar</button>
                 </td>
             </tr>
 
@@ -424,7 +407,7 @@ footer{
                 <td>Acrílico</td>
                 <td>R$90</td>
                 <td>
-                    <a href="#" class="pagar-btn">Pagar</a>
+                    <button class="agendar-btn" onclick="agendar('Acrílico - R$90')">Agendar</button>
                 </td>
             </tr>
 
@@ -432,7 +415,7 @@ footer{
                 <td>Esmaltação em Gel</td>
                 <td>R$50</td>
                 <td>
-                    <a href="#" class="pagar-btn">Pagar</a>
+                    <button class="agendar-btn" onclick="agendar('Esmaltação em Gel - R$50')">Agendar</button>
                 </td>
             </tr>
 
@@ -440,7 +423,7 @@ footer{
                 <td>Banho de Gel</td>
                 <td>R$65</td>
                 <td>
-                    <a href="#" class="pagar-btn">Pagar</a>
+                    <button class="agendar-btn" onclick="agendar('Banho de Gel - R$65')">Agendar</button>
                 </td>
             </tr>
 
@@ -448,7 +431,7 @@ footer{
                 <td>Manutenção</td>
                 <td>R$90</td>
                 <td>
-                    <a href="#" class="pagar-btn">Pagar</a>
+                    <button class="agendar-btn" onclick="agendar('Manutenção - R$90')">Agendar</button>
                 </td>
             </tr>
 
@@ -456,7 +439,7 @@ footer{
                 <td>Manicure / Pedicure</td>
                 <td>R$20</td>
                 <td>
-                    <a href="#" class="pagar-btn">Pagar</a>
+                    <button class="agendar-btn" onclick="agendar('Manicure / Pedicure - R$20')">Agendar</button>
                 </td>
             </tr>
 
@@ -464,7 +447,7 @@ footer{
                 <td>Manicure e Pedicure</td>
                 <td>R$35</td>
                 <td>
-                    <a href="#" class="pagar-btn">Pagar</a>
+                    <button class="agendar-btn" onclick="agendar('Manicure e Pedicure - R$35')">Agendar</button>
                 </td>
             </tr>
 
@@ -479,6 +462,14 @@ footer{
 </footer>
 
 <script>
+// Função para enviar mensagem WhatsApp
+function agendar(servico) {
+    const numeroWhatsApp = '5531998009842';
+    const mensagem = `Olá! Gostaria de agendar: ${servico}`;
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+    window.open(urlWhatsApp, '_blank');
+}
+
 // Criar partículas douradas animadas
 const particlesContainer = document.getElementById('particles');
 
