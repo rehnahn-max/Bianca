@@ -1,521 +1,608 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Bia Nails | Luxo & Elegância</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="theme-color" content="#050816" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="format-detection" content="telephone=no" />
 
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
+<title>Assistência Técnica Premium</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+    --primary:#00e5ff;
+    --secondary:#0077ff;
+    --bg:#050816;
+    --card:rgba(255,255,255,.05);
+    --border:rgba(255,255,255,.08);
+}
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Open Sans', sans-serif;
-    font-style: italic;
-    font-weight: 700;
+}
+
+html{
+    scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
 }
 
 body{
-    background:#000;
-    color:white;
+    min-height:100vh;
     overflow-x:hidden;
-}
-
-/* ===== ANIMAÇÕES ===== */
-@keyframes brilho-dourado {
-    0% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.3; }
-}
-
-@keyframes float-up {
-    0% { 
-        transform: translateY(100vh) translateX(0);
-        opacity: 0;
-    }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { 
-        transform: translateY(-100vh) translateX(100px);
-        opacity: 0;
-    }
-}
-
-@keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.5); }
-    50% { box-shadow: 0 0 40px rgba(212,175,55,0.9); }
-}
-
-@keyframes shimmer {
-    0% { background-position: -1000px 0; }
-    100% { background-position: 1000px 0; }
-}
-
-/* ===== PARTÍCULAS DOURADAS DE FUNDO ===== */
-.particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, #d4af37, #f5d76e);
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(212,175,55,0.8);
-    animation: float-up linear infinite;
-}
-
-/* ===== IMAGEM FIXA DE FUNDO ===== */
-.banner{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100vh;
-    background:url("wallpaperbackspace.png") no-repeat center center;
-    background-size:cover;
-    opacity:0.35;
-    z-index:-1;
-}
-
-/* ===== OVERLAY BRILHO DOURADO ===== */
-.golden-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    animation: brilho-dourado 4s ease-in-out infinite;
-}
-
-/* ===== BRILHOS LATERAIS ===== */
-.glow-left {
-    position: fixed;
-    left: -200px;
-    top: 50%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(60px);
-    animation: brilho-dourado 6s ease-in-out infinite;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.glow-right {
-    position: fixed;
-    right: -200px;
-    bottom: 50px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(60px);
-    animation: brilho-dourado 8s ease-in-out infinite;
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* ===== CONTEÚDO ===== */
-.container{
+    font-family:'Rajdhani',sans-serif;
+    background:var(--bg);
+    color:#fff;
     position:relative;
-    padding:20px 20px 60px 20px;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    -webkit-tap-highlight-color:transparent;
+}
+
+.background{
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(2,3,10,.60), rgba(5,8,22,.75)),
+    url('Fundo.jpg') center center/cover no-repeat;
+
+    transform:scale(1.02);
+
+    will-change:transform;
+
+    z-index:-5;
+}
+
+.background::after{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top, rgba(0,229,255,.18), transparent 40%),
+    radial-gradient(circle at bottom, rgba(0,119,255,.15), transparent 40%);
+}
+
+canvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-4;
+    pointer-events:none;
+}
+
+.container{
+    width:min(95%, 980px);
+    margin:auto;
+    padding:35px 15px 80px;
+    position:relative;
+    z-index:2;
+}
+
+.hero{
     text-align:center;
-    z-index: 1;
+    margin-bottom:40px;
 }
 
-/* ===== TÍTULO ===== */
-.container h1{
-    font-size:42px;
-    color:#d4af37;
-    margin-bottom:35px;
-    text-shadow:0 0 15px rgba(212,175,55,0.6), 0 0 30px rgba(212,175,55,0.3);
-    animation: pulse-glow 3s ease-in-out infinite;
+.hero h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(2.3rem,6vw,4.5rem);
+    color:var(--primary);
+    letter-spacing:3px;
+
+    text-shadow:
+    0 0 8px rgba(0,229,255,.8),
+    0 0 25px rgba(0,229,255,.45),
+    0 0 50px rgba(0,229,255,.2);
+
+    animation:neonPulse 2.2s ease-in-out infinite alternate;
 }
 
-/* ===== TABELA ===== */
-.table-wrapper{
-    display:flex;
-    justify-content:center;
-    margin-top:30px;
+@keyframes neonPulse{
+
+    from{
+        opacity:.92;
+        transform:translateY(0px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(-2px);
+    }
+
 }
 
-table{
-    width:95%;
-    max-width:800px;
-    border-collapse:separate;
-    border-spacing:0;
-    background:#000;
-    border:2px solid;
-    border-image: linear-gradient(45deg, #d4af37, #f5d76e) 1;
-    border-radius:20px;
-    overflow:hidden;
-    backdrop-filter:blur(4px);
-    box-shadow: 0 0 30px rgba(212,175,55,0.3);
-    animation: pulse-glow 4s ease-in-out infinite;
+.hero p{
+    margin-top:12px;
+    font-size:clamp(1rem,2vw,1.3rem);
+    color:#fff;
+    font-family:'Orbitron',sans-serif;
+    letter-spacing:2px;
+    opacity:.92;
 }
 
-th, td{
-    padding:15px;
-    border-bottom:1px solid rgba(255,215,0,0.3);
-}
+.card{
+    background:rgba(255,255,255,.06);
 
-th{
-    background:linear-gradient(90deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.2) 50%, rgba(212,175,55,0.1) 100%);
-    color:#f5d76e;
-    text-shadow: 0 0 10px rgba(212,175,55,0.5);
-}
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
 
-tr:hover {
-    background: rgba(212,175,55,0.05);
-    transition: 0.3s ease;
-}
+    border:1px solid rgba(255,255,255,.08);
 
-tr:last-child td{
-    border-bottom:none;
-}
-
-/* ===== BOTÃO AGENDAR ===== */
-.agendar-btn{
-    display:inline-block;
-    background:linear-gradient(45deg,#d4af37,#f7e08a);
-    color:#000;
-    padding:10px 18px;
     border-radius:30px;
+
+    padding:28px;
+
+    box-shadow:
+    0 0 25px rgba(0,229,255,.10),
+    0 0 60px rgba(0,119,255,.08);
+
+    will-change:transform;
+
+    transform:translateZ(0);
+}
+
+.table-title{
+    text-align:center;
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(1.5rem,3vw,2.2rem);
+    margin-bottom:28px;
+    color:var(--primary);
+    letter-spacing:2px;
+}
+
+.services{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.service{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+
+    padding:22px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(0,229,255,.12);
+
+    transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+
+    flex-wrap:wrap;
+
+    animation:serviceBlink 2.5s ease-in-out infinite alternate;
+
+    will-change:transform;
+}
+
+@keyframes serviceBlink{
+
+    from{
+        box-shadow:
+        0 0 10px rgba(0,229,255,.08);
+    }
+
+    to{
+        box-shadow:
+        0 0 20px rgba(0,229,255,.18),
+        0 0 40px rgba(0,119,255,.08);
+    }
+
+}
+
+.service:hover{
+    transform:translateY(-4px);
+
+    background:rgba(0,229,255,.08);
+
+    box-shadow:
+    0 0 18px rgba(0,229,255,.20),
+    0 0 45px rgba(0,119,255,.12);
+}
+
+.service-info h2{
+    font-size:1.15rem;
+    margin-bottom:8px;
+    color:#fff;
+}
+
+.price{
+    color:var(--primary);
+    font-size:1.4rem;
+    font-weight:700;
+    font-family:'Orbitron',sans-serif;
+
+    text-shadow:
+    0 0 8px rgba(0,229,255,.7);
+}
+
+.whatsapp-btn{
+
     text-decoration:none;
-    transition:0.3s ease;
-    box-shadow:0 0 15px rgba(212,175,55,0.5);
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
-    font-style: italic;
-    font-weight: 700;
+
+    background:linear-gradient(45deg,var(--primary),var(--secondary));
+
+    color:#fff;
+
+    padding:14px 22px;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+    transition:.25s ease;
+
+    white-space:nowrap;
+
+    font-family:'Orbitron',sans-serif;
+
+    font-size:.9rem;
+
+    min-height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+    0 0 18px rgba(0,229,255,.25);
 }
 
-.agendar-btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 30px rgba(212,175,55,1);
-    text-shadow: 0 0 5px rgba(0,0,0,0.3);
+.whatsapp-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 28px rgba(0,229,255,.40),
+    0 0 50px rgba(0,119,255,.15);
 }
 
-.agendar-btn:active {
-    transform: scale(0.95);
+.info{
+    margin-top:30px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(0,229,255,.12);
+
+    font-family:'Orbitron',sans-serif;
+
+    line-height:1.9;
+
+    box-shadow:
+    0 0 20px rgba(0,229,255,.05);
 }
 
-/* ===== BANNER PROMOÇÃO ===== */
-.promo-banner{
-    margin:40px auto;
-    width:95%;
-    max-width:800px;
-    background:rgba(212,175,55,0.12);
-    border:2px solid gold;
-    border-radius:25px;
-    padding:25px;
+.info p{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+
+    margin-bottom:14px;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.03);
+}
+
+.info strong{
+    color:var(--primary);
+}
+
+.obs{
+    margin-top:25px;
+
+    padding:20px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
     text-align:center;
-    box-shadow:0 0 30px rgba(212,175,55,0.4), inset 0 0 20px rgba(212,175,55,0.1);
-    backdrop-filter:blur(4px);
-    animation: pulse-glow 3s ease-in-out infinite;
-    position: relative;
-    overflow: hidden;
+
+    line-height:1.9;
+
+    font-size:.95rem;
 }
 
-.promo-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: shimmer 3s infinite;
-    z-index: -1;
-}
-
-.promo-banner h2{
-    color:#d4af37;
-    font-size:30px;
-    margin-bottom:15px;
-    text-shadow: 0 0 15px rgba(212,175,55,0.7);
-}
-
-.promo-banner p{
-    color:white;
-    font-size:18px;
-    line-height:1.6;
-}
-
-.promo-banner span{
-    color:#f5d76e;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(212,175,55,0.6);
-}
-
-.promo-banner .agendar-btn {
-    margin-top: 15px;
-}
-
-/* ===== TÍTULO TABELA VALORES ===== */
-.tabela-titulo {
-    color: #d4af37;
-    font-size: 28px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 15px rgba(212,175,55,0.6);
-    animation: pulse-glow 3s ease-in-out infinite;
-}
-
-footer{
+.footer{
+    margin-top:38px;
     text-align:center;
-    padding:30px;
-    color:#aaa;
-    position: relative;
-    z-index: 1;
+    color:#d0d0d0;
+    font-size:1rem;
+    letter-spacing:1px;
+    opacity:.9;
 }
 
-/* ===== RESPONSIVO ===== */
-@media (max-width:768px){
+input,
+textarea,
+button{
+    font-size:16px;
+    -webkit-appearance:none;
+    border:none;
+    outline:none;
+}
+
+@media(max-width:768px){
 
     .container{
-        padding-top:20px;
+        width:100%;
+        padding:22px 14px 60px;
     }
 
-    .container h1{
-        font-size:32px;
+    .hero{
+        margin-bottom:30px;
     }
 
-    th, td{
-        font-size:13px;
-        padding:10px;
+    .hero h1{
+        font-size:2.2rem;
+        line-height:1.2;
     }
 
-    .promo-banner h2{
-        font-size:24px;
+    .hero p{
+        font-size:.9rem;
+        line-height:1.7;
     }
 
-    .promo-banner p{
-        font-size:15px;
+    .card{
+        padding:18px;
+        border-radius:24px;
     }
 
-    .glow-left, .glow-right {
-        width: 300px;
-        height: 300px;
-        filter: blur(50px);
+    .service{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:18px;
     }
 
-    .tabela-titulo {
-        font-size: 24px;
+    .service-info{
+        width:100%;
     }
 
-    .agendar-btn {
-        padding: 8px 14px;
-        font-size: 12px;
+    .service-info h2{
+        font-size:1rem;
     }
-}
 
-/* ===== iOS SAFE AREA ===== */
-@supports (padding: max(0px)) {
-    body {
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
+    .price{
+        font-size:1.2rem;
     }
+
+    .whatsapp-btn{
+        width:100%;
+        text-align:center;
+        font-size:.82rem;
+    }
+
+    .info{
+        padding:18px;
+    }
+
+    .info p{
+        font-size:.88rem;
+        line-height:1.8;
+    }
+
+    .obs{
+        font-size:.88rem;
+        line-height:1.8;
+    }
+
+    .footer{
+        font-size:.9rem;
+        line-height:1.7;
+    }
+
 }
 
 </style>
 </head>
-
 <body>
 
-<!-- IMAGEM FIXA -->
-<div class="banner"></div>
+<div class="background"></div>
 
-<!-- OVERLAY DOURADO -->
-<div class="golden-overlay"></div>
+<canvas id="particles"></canvas>
 
-<!-- BRILHOS LATERAIS -->
-<div class="glow-left"></div>
-<div class="glow-right"></div>
-
-<!-- PARTÍCULAS DOURADAS -->
-<div class="particles" id="particles"></div>
-
-<!-- CONTEÚDO -->
 <div class="container">
 
-    <!-- BANNER PROMOÇÃO -->
-    <div class="promo-banner">
+    <div class="hero">
+        <h1>RENAN TECH PREMIUM</h1>
+        <p>Performance • Upgrade • Manutenção Profissional</p>
+    </div>
 
-        <h2>✨ Promoção da Semana ✨</h2>
+    <div class="card">
 
-        <p>
-            💎 <span>Gel na Fibra + Decoração</span>
-            por apenas <span>R$69,99</span>
-        </p>
+        <h2 class="table-title">Tabela de Preços</h2>
 
-        <p>
-            💅 Agende agora e garanta seu horário!
-        </p>
+        <div class="services">
 
-        <button class="agendar-btn" onclick="agendar('Promoção: Gel na Fibra + Decoração - R$69,99')">
-            🎁 AGENDAR PROMOÇÃO
-        </button>
+            <div class="service">
+                <div class="service-info">
+                    <h2>Troca de teclado notebook</h2>
+                    <div class="price">R$120</div>
+                </div>
+
+                <a class="whatsapp-btn"
+                href="https://wa.me/5531992372280?text=Olá,%20quero%20agendar%20Troca%20de%20teclado%20notebook%20-%20Valor:%20R$120" target="_blank">
+                Agendar Serviço
+                </a>
+            </div>
+
+            <div class="service">
+                <div class="service-info">
+                    <h2>Troca de tela notebook</h2>
+                    <div class="price">R$120</div>
+                </div>
+
+                <a class="whatsapp-btn"
+                href="https://wa.me/5531992372280?text=Olá,%20quero%20agendar%20Troca%20de%20tela%20notebook%20-%20Valor:%20R$120" target="_blank">
+                Agendar Serviço
+                </a>
+            </div>
+
+            <div class="service">
+                <div class="service-info">
+                    <h2>Montagem de computador</h2>
+                    <div class="price">R$150</div>
+                </div>
+
+                <a class="whatsapp-btn"
+                href="https://wa.me/5531992372280?text=Olá,%20quero%20agendar%20Montagem%20de%20computador%20-%20Valor:%20R$150" target="_blank">
+                Agendar Serviço
+                </a>
+            </div>
+
+            <div class="service">
+                <div class="service-info">
+                    <h2>Formatação</h2>
+                    <div class="price">R$80</div>
+                </div>
+
+                <a class="whatsapp-btn"
+                href="https://wa.me/5531992372280?text=Olá,%20quero%20agendar%20Formatação%20-%20Valor:%20R$80" target="_blank">
+                Agendar Serviço
+                </a>
+            </div>
+
+            <div class="service">
+                <div class="service-info">
+                    <h2>Formatação com backup</h2>
+                    <div class="price">R$120</div>
+                </div>
+
+                <a class="whatsapp-btn"
+                href="https://wa.me/5531992372280?text=Olá,%20quero%20agendar%20Formatação%20com%20backup%20-%20Valor:%20R$120" target="_blank">
+                Agendar Serviço
+                </a>
+            </div>
+
+            <div class="service">
+                <div class="service-info">
+                    <h2>Limpeza com organização de cabos</h2>
+                    <div class="price">R$80</div>
+                </div>
+
+                <a class="whatsapp-btn"
+                href="https://wa.me/5531992372280?text=Olá,%20quero%20agendar%20Limpeza%20com%20organização%20de%20cabos%20-%20Valor:%20R$80" target="_blank">
+                Agendar Serviço
+                </a>
+            </div>
+
+        </div>
+
+        <div class="info">
+
+            <p>
+                ⚡ Pra dar aquela turbinada na sua máquina será feito um orçamento por <strong>R$20</strong>.
+            </p>
+
+            <p>
+                ✅ O valor só é descontado após aceito o orçamento.
+            </p>
+
+            <p>
+                🚗 Buscar a domicílio taxa <strong>R$20</strong> dependendo da localidade.
+            </p>
+
+        </div>
+
+        <div class="obs">
+            <strong>Obs:</strong>
+            As peças são por conta do cliente, com garantia de 90 dias de acordo com o código do consumidor Artigo 26, inciso II.
+        </div>
 
     </div>
 
-    <!-- TÍTULO TABELA -->
-    <h1 class="tabela-titulo">✨ Tabela de Valores ✨</h1>
-    
-    <div class="table-wrapper">
-
-        <table>
-
-            <tr>
-                <th>Procedimento</th>
-                <th>Valor</th>
-                <th>Ação</th>
-            </tr>
-
-            <tr>
-                <td>Gel na Fibra</td>
-                <td>R$90</td>
-                <td>
-                    <button class="agendar-btn" onclick="agendar('Gel na Fibra - R$90')">Agendar</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Gel na Tips</td>
-                <td>R$85</td>
-                <td>
-                    <button class="agendar-btn" onclick="agendar('Gel na Tips - R$85')">Agendar</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Molde F1</td>
-                <td>R$90</td>
-                <td>
-                    <button class="agendar-btn" onclick="agendar('Molde F1 - R$90')">Agendar</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Acrílico</td>
-                <td>R$90</td>
-                <td>
-                    <button class="agendar-btn" onclick="agendar('Acrílico - R$90')">Agendar</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Esmaltação em Gel</td>
-                <td>R$50</td>
-                <td>
-                    <button class="agendar-btn" onclick="agendar('Esmaltação em Gel - R$50')">Agendar</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Banho de Gel</td>
-                <td>R$65</td>
-                <td>
-                    <button class="agendar-btn" onclick="agendar('Banho de Gel - R$65')">Agendar</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Manutenção</td>
-                <td>R$90</td>
-                <td>
-                    <button class="agendar-btn" onclick="agendar('Manutenção - R$90')">Agendar</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Manicure / Pedicure</td>
-                <td>R$20</td>
-                <td>
-                    <button class="agendar-btn" onclick="agendar('Manicure / Pedicure - R$20')">Agendar</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Manicure e Pedicure</td>
-                <td>R$35</td>
-                <td>
-                    <button class="agendar-btn" onclick="agendar('Manicure e Pedicure - R$35')">Agendar</button>
-                </td>
-            </tr>
-
-        </table>
-
+    <div class="footer">
+        Atendimento rápido via WhatsApp • Garantia de 90 dias • Suporte Profissional
     </div>
 
 </div>
 
-<footer>
-© 2026 Bia Nails - Luxo & Elegância ✨
-</footer>
-
 <script>
-// Função para enviar mensagem WhatsApp
-function agendar(servico) {
-    const numeroWhatsApp = '5531998009842';
-    const mensagem = `Olá! Gostaria de agendar: ${servico}`;
-    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-    window.open(urlWhatsApp, '_blank');
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
 
-// Criar partículas douradas animadas
-const particlesContainer = document.getElementById('particles');
+resize();
+window.addEventListener('resize', resize);
 
-function createParticle() {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    const size = Math.random() * 6 + 2;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-    
-    const startX = Math.random() * window.innerWidth;
-    particle.style.left = startX + 'px';
-    particle.style.bottom = '-10px';
-    
-    const duration = Math.random() * 15 + 10;
-    particle.style.animationDuration = duration + 's';
-    
-    const delay = Math.random() * 5;
-    particle.style.animationDelay = delay + 's';
-    
-    particlesContainer.appendChild(particle);
-    
-    setTimeout(() => particle.remove(), duration * 1000);
+const particles = [];
+const totalParticles = window.innerWidth < 768 ? 45 : 80;
+
+for(let i = 0; i < totalParticles; i++){
+
+    particles.push({
+        x:Math.random() * canvas.width,
+        y:Math.random() * canvas.height,
+        radius:Math.random() * 2.2,
+        speedX:(Math.random() - 0.5) * 0.25,
+        speedY:(Math.random() - 0.5) * 0.25,
+        opacity:Math.random() * 0.8
+    });
+
 }
 
-// Criar partículas a cada intervalo
-setInterval(createParticle, 500);
+function animate(){
 
-// Criar partículas iniciais
-for (let i = 0; i < 10; i++) {
-    createParticle();
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach(p => {
+
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+
+        ctx.fillStyle = `rgba(0,229,255,${p.opacity})`;
+
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#00e5ff';
+
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(animate);
 }
+
+animate();
+
 </script>
 
 </body>
