@@ -64,3 +64,16 @@ function trocar(){
 }
 
 setInterval(trocar,4000);
+
+
+navigator.serviceWorker.getRegistrations().then(registrations => {
+
+    registrations.forEach(reg => reg.update());
+
+});
+
+navigator.serviceWorker.addEventListener("controllerchange", () => {
+
+    window.location.reload();
+
+});
