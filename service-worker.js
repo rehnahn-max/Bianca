@@ -19,3 +19,48 @@ caches.match(event.request)
 .then(response => response || fetch(event.request))
 );
 });
+
+const portfolio = document.querySelectorAll(".portfolio-slide");
+
+let foto = 0;
+
+setInterval(()=>{
+
+    portfolio[foto].classList.remove("active");
+
+    foto++;
+
+    if(foto >= portfolio.length){
+
+        foto = 0;
+
+    }
+
+    portfolio[foto].classList.add("active");
+
+},4000);
+
+const imagens = document.querySelectorAll(".carrossel img");
+const pontos = document.querySelectorAll(".bolinhas span");
+
+let atual = 0;
+
+function trocar(){
+
+    imagens[atual].classList.remove("ativo");
+    pontos[atual].classList.remove("ativa");
+
+    atual++;
+
+    if(atual >= imagens.length){
+
+        atual = 0;
+
+    }
+
+    imagens[atual].classList.add("ativo");
+    pontos[atual].classList.add("ativa");
+
+}
+
+setInterval(trocar,4000);

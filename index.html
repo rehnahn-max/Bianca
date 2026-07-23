@@ -2,6 +2,23 @@
 <html lang="pt-br">
 <head>
     <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bia Nails | Luxo & Elegância</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="icon" href="icon-192.png">
+
+</head>
 
 <meta name="theme-color" content="#050816">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -476,9 +493,7 @@ footer{
 
 </div>
 
-<footer>
-© 2026 Bia Nails - Luxo & Elegância ✨
-</footer>
+
 
 <script>
 // Função para enviar mensagem WhatsApp
@@ -490,9 +505,7 @@ function agendar(servico) {
 }
 
 // Criar partículas douradas animadas
-const particlesContainer = document.getElementById('particles');
 
-function createParticle() {
     const particle = document.createElement('div');
     particle.className = 'particle';
     
@@ -513,7 +526,7 @@ function createParticle() {
     particlesContainer.appendChild(particle);
     
     setTimeout(() => particle.remove(), duration * 1000);
-}
+
 
 // Criar partículas a cada intervalo
 setInterval(createParticle, 500);
@@ -532,5 +545,401 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
+
+
+
+
+
+
+<!-- =========================
+     GALERIA DE TRABALHOS
+========================= -->
+
+
+<section class="galeria">
+
+
+<h2>
+✨ Conheça meu trabalho ✨
+</h2>
+
+
+
+<div class="carrossel">
+
+
+
+<img 
+src="trabalho1.jpg"
+class="ativo"
+alt="Trabalho de unha Bia Nails 1">
+
+
+
+<img 
+src="trabalho2.jpg"
+alt="Trabalho de unha Bia Nails 2">
+
+
+
+<img 
+src="trabalho3.jpg"
+alt="Trabalho de unha Bia Nails 3">
+
+
+
+<img 
+src="trabalho4.jpg"
+alt="Trabalho de unha Bia Nails 4">
+
+
+
+
+</div>
+
+
+
+
+<div class="bolinhas">
+
+
+<span class="ativa"></span>
+
+<span></span>
+
+<span></span>
+
+<span></span>
+
+<span></span>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+</div>
+
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
+
+
+<footer>
+
+
+© 2026 Bia Nails  
+<br>
+Luxo & Elegância ✨
+
+
+</footer>
+
+
+
+
+
+<script>
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+
+function agendar(servico){
+
+
+const numeroWhatsApp = "5531998009842";
+
+
+const mensagem = 
+`Olá! Gostaria de agendar: ${servico}`;
+
+
+
+const url = 
+"https://wa.me/" 
++ numeroWhatsApp 
++ "?text=" 
++ encodeURIComponent(mensagem);
+
+
+
+window.open(url,"_blank");
+
+
+}
+
+
+
+
+
+/* =========================
+   PARTÍCULAS DOURADAS
+========================= */
+
+
+const particlesContainer = 
+document.getElementById("particles");
+
+
+
+function criarParticula(){
+
+
+const particle = 
+document.createElement("div");
+
+
+
+particle.className = "particle";
+
+
+
+const tamanho = 
+Math.random() * 6 + 2;
+
+
+
+particle.style.width = 
+tamanho + "px";
+
+
+
+particle.style.height = 
+tamanho + "px";
+
+
+
+particle.style.left = 
+Math.random() * window.innerWidth + "px";
+
+
+
+particle.style.bottom = "-10px";
+
+
+
+const duracao =
+Math.random() * 15 + 10;
+
+
+
+particle.style.animationDuration =
+duracao + "s";
+
+
+
+particle.style.animationDelay =
+Math.random() * 5 + "s";
+
+
+
+particlesContainer.appendChild(particle);
+
+
+
+setTimeout(()=>{
+
+
+particle.remove();
+
+
+}, duracao * 1000);
+
+
+
+}
+
+
+
+
+
+setInterval(criarParticula,500);
+
+
+
+for(let i = 0; i < 15; i++){
+
+
+criarParticula();
+
+
+}
+
+
+
+
+
+
+/* =========================
+   CARROSSEL GALERIA
+========================= */
+
+
+const imagens =
+document.querySelectorAll(".carrossel img");
+
+
+
+const bolinhas =
+document.querySelectorAll(".bolinhas span");
+
+
+
+let indice = 0;
+
+
+
+
+function trocarImagem(numero){
+
+
+imagens.forEach(img=>{
+
+img.classList.remove("ativo");
+
+});
+
+
+
+bolinhas.forEach(dot=>{
+
+dot.classList.remove("ativa");
+
+});
+
+
+
+imagens[numero]
+.classList.add("ativo");
+
+
+
+bolinhas[numero]
+.classList.add("ativa");
+
+
+
+indice = numero;
+
+
+}
+
+
+
+
+function proximaImagem(){
+
+
+indice++;
+
+
+if(indice >= imagens.length){
+
+indice = 0;
+
+}
+
+
+trocarImagem(indice);
+
+
+}
+
+
+
+
+
+let intervalo = 
+setInterval(proximaImagem,4000);
+
+
+
+
+
+bolinhas.forEach((bolinha,index)=>{
+
+
+bolinha.addEventListener("click",()=>{
+
+
+clearInterval(intervalo);
+
+
+trocarImagem(index);
+
+
+
+intervalo =
+setInterval(proximaImagem,4000);
+
+
+
+});
+
+
+});
+
+
+
+
+
+/* =========================
+   PWA SERVICE WORKER
+========================= */
+
+
+if("serviceWorker" in navigator){
+
+
+window.addEventListener("load",()=>{
+
+
+navigator.serviceWorker.register(
+"service-worker.js"
+)
+
+
+.then(()=>{
+
+
+console.log(
+"Bia Nails PWA ativo"
+);
+
+
+})
+
+
+.catch((erro)=>{
+
+
+console.log(
+"Erro PWA:",
+erro
+);
+
+
+});
+
+
+});
+
+
+}
+
+
+</script>
+
 </body>
+
 </html>

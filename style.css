@@ -1,0 +1,206 @@
+/* =========================
+   GALERIA BIA NAILS
+========================= */
+
+.galeria{
+
+    position:relative;
+    z-index:2;
+
+    width:95%;
+    max-width:800px;
+
+    margin:50px auto;
+
+    text-align:center;
+
+}
+
+
+.galeria h2{
+
+    color:#d4af37;
+
+    font-size:30px;
+
+    margin-bottom:25px;
+
+    text-shadow:
+    0 0 15px rgba(212,175,55,.7);
+
+}
+
+
+
+.carrossel{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:800px;
+
+    height:450px;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    border:2px solid #d4af37;
+
+    box-shadow:
+    0 0 30px rgba(212,175,55,.5);
+
+}
+
+
+
+.carrossel img{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+
+}
+
+
+
+.carrossel img.ativo{
+
+    opacity:1;
+
+}
+
+
+
+.bolinhas{
+
+    margin-top:20px;
+
+}
+
+
+
+.bolinhas span{
+
+    display:inline-block;
+
+    width:12px;
+
+    height:12px;
+
+    margin:5px;
+
+    border-radius:50%;
+
+    background:#555;
+
+    cursor:pointer;
+
+}
+
+
+
+.bolinhas span.ativa{
+
+    background:#d4af37;
+
+    box-shadow:
+    0 0 10px #d4af37;
+
+}
+
+
+
+/* CELULAR */
+
+@media(max-width:768px){
+
+
+.carrossel{
+
+    height:350px;
+
+}
+
+
+}
+
+
+@media(max-width:480px){
+
+
+.carrossel{
+
+    height:300px;
+
+}
+
+
+}
+
+/* TESTE GALERIA */
+
+.galeria {
+    width:95%;
+    max-width:800px;
+    margin:50px auto;
+    text-align:center;
+}
+
+
+.carrossel {
+
+    position:relative;
+
+    width:100%;
+
+    height:450px;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+}
+
+
+
+.carrossel img {
+
+    position:absolute !important;
+
+    top:0;
+
+    left:0;
+
+    width:100% !important;
+
+    height:100% !important;
+
+    object-fit:cover;
+
+    display:block;
+
+    opacity:0;
+
+}
+
+
+
+.carrossel img.ativo {
+
+    opacity:1;
+
+}
