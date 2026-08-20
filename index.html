@@ -1,927 +1,1628 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta name="theme-color" content="#050816">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent">
+
+    <meta name="apple-mobile-web-app-title"
+          content="Bia Nails">
+
+    <title>Bia Nails | Luxo & Elegância</title>
+
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
 
-<head>
+    <link rel="icon"
+          type="image/png"
+          href="icon-192.png">
 
-<meta charset="UTF-8">
+    <link rel="apple-touch-icon"
+          href="icon-192.png">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="style.css">
 
-<title>Bia Nails | Luxo & Elegância</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap"
+          rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
-
-<link rel="manifest" href="manifest.json">
-
-<link rel="icon" href="icon-192.png">
-
-</head>
-
-<meta name="theme-color" content="#050816">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Bia Nails | Luxo & Elegância</title>
-<link rel="icon" type="image/png" href="icon-192.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =====================================================
+   CONFIGURAÇÃO GERAL
+===================================================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Open Sans', sans-serif;
-    font-style: italic;
-    font-weight: 700;
+
+    font-family:'Open Sans', sans-serif;
+
+    font-style:italic;
+    font-weight:700;
 }
+
 
 body{
+
     background:#000;
+
     color:white;
+
     overflow-x:hidden;
+
 }
 
-/* ===== ANIMAÇÕES ===== */
-@keyframes brilho-dourado {
-    0% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.3; }
-}
 
-@keyframes float-up {
-    0% { 
-        transform: translateY(100vh) translateX(0);
-        opacity: 0;
+/* =====================================================
+   ANIMAÇÕES
+===================================================== */
+
+@keyframes brilho-dourado{
+
+    0%{
+        opacity:.3;
     }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { 
-        transform: translateY(-100vh) translateX(100px);
-        opacity: 0;
+
+    50%{
+        opacity:.8;
     }
+
+    100%{
+        opacity:.3;
+    }
+
 }
 
-@keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.5); }
-    50% { box-shadow: 0 0 40px rgba(212,175,55,0.9); }
+
+@keyframes float-up{
+
+    0%{
+
+        transform:
+        translateY(100vh)
+        translateX(0);
+
+        opacity:0;
+
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    90%{
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+        translateY(-100vh)
+        translateX(100px);
+
+        opacity:0;
+
+    }
+
 }
 
-@keyframes shimmer {
-    0% { background-position: -1000px 0; }
-    100% { background-position: 1000px 0; }
+
+@keyframes pulse-glow{
+
+    0%,100%{
+
+        box-shadow:
+        0 0 20px
+        rgba(212,175,55,.5);
+
+    }
+
+    50%{
+
+        box-shadow:
+        0 0 40px
+        rgba(212,175,55,.9);
+
+    }
+
 }
 
-/* ===== PARTÍCULAS DOURADAS DE FUNDO ===== */
-.particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
+
+@keyframes shimmer{
+
+    0%{
+        background-position:-1000px 0;
+    }
+
+    100%{
+        background-position:1000px 0;
+    }
+
 }
 
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, #d4af37, #f5d76e);
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(212,175,55,0.8);
-    animation: float-up linear infinite;
-}
 
-/* ===== IMAGEM FIXA DE FUNDO ===== */
-.banner{
+/* =====================================================
+   PARTÍCULAS
+===================================================== */
+
+.particles{
+
     position:fixed;
+
     top:0;
     left:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+
+.particle{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    background:
+    radial-gradient(
+        circle,
+        #d4af37,
+        #f5d76e
+    );
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 10px
+    rgba(212,175,55,.8);
+
+    animation:
+    float-up
+    linear
+    infinite;
+
+}
+
+
+/* =====================================================
+   FUNDO
+===================================================== */
+
+.banner{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
     width:100%;
     height:100vh;
-    background:url("wallpaperbackspace.png") no-repeat center center;
+
+    background:
+    url("wallpaperbackspace.png")
+    no-repeat
+    center center;
+
     background-size:cover;
-    opacity:0.35;
+
+    opacity:.35;
+
     z-index:-1;
+
 }
 
-/* ===== OVERLAY BRILHO DOURADO ===== */
-.golden-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    animation: brilho-dourado 4s ease-in-out infinite;
+
+/* =====================================================
+   OVERLAY DOURADO
+===================================================== */
+
+.golden-overlay{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+    radial-gradient(
+        circle at 50% 50%,
+        rgba(212,175,55,.15) 0%,
+        transparent 70%
+    );
+
+    pointer-events:none;
+
+    z-index:0;
+
+    animation:
+    brilho-dourado
+    4s
+    ease-in-out
+    infinite;
+
 }
 
-/* ===== BRILHOS LATERAIS ===== */
-.glow-left {
-    position: fixed;
-    left: -200px;
-    top: 50%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(60px);
-    animation: brilho-dourado 6s ease-in-out infinite;
-    z-index: 0;
-    pointer-events: none;
+
+/* =====================================================
+   BRILHOS LATERAIS
+===================================================== */
+
+.glow-left{
+
+    position:fixed;
+
+    left:-200px;
+
+    top:50%;
+
+    width:400px;
+    height:400px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.2) 0%,
+        transparent 70%
+    );
+
+    border-radius:50%;
+
+    filter:blur(60px);
+
+    animation:
+    brilho-dourado
+    6s
+    ease-in-out
+    infinite;
+
+    z-index:0;
+
+    pointer-events:none;
+
 }
 
-.glow-right {
-    position: fixed;
-    right: -200px;
-    bottom: 50px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(60px);
-    animation: brilho-dourado 8s ease-in-out infinite;
-    z-index: 0;
-    pointer-events: none;
+
+.glow-right{
+
+    position:fixed;
+
+    right:-200px;
+
+    bottom:50px;
+
+    width:400px;
+    height:400px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.15) 0%,
+        transparent 70%
+    );
+
+    border-radius:50%;
+
+    filter:blur(60px);
+
+    animation:
+    brilho-dourado
+    8s
+    ease-in-out
+    infinite;
+
+    z-index:0;
+
+    pointer-events:none;
+
 }
 
-/* ===== CONTEÚDO ===== */
+
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
 .container{
+
     position:relative;
-    padding:20px 20px 60px 20px;
+
+    padding:
+    20px
+    20px
+    60px
+    20px;
+
     text-align:center;
-    z-index: 1;
+
+    z-index:1;
+
 }
 
-/* ===== TÍTULO ===== */
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
 .container h1{
+
     font-size:42px;
+
     color:#d4af37;
+
     margin-bottom:35px;
-    text-shadow:0 0 15px rgba(212,175,55,0.6), 0 0 30px rgba(212,175,55,0.3);
-    animation: pulse-glow 3s ease-in-out infinite;
+
+    text-shadow:
+    0 0 15px rgba(212,175,55,.6),
+    0 0 30px rgba(212,175,55,.3);
+
+    animation:
+    pulse-glow
+    3s
+    ease-in-out
+    infinite;
+
 }
 
-/* ===== TABELA ===== */
+
+/* =====================================================
+   TABELA
+===================================================== */
+
 .table-wrapper{
+
     display:flex;
+
     justify-content:center;
+
     margin-top:30px;
+
 }
+
 
 table{
     width:95%;
     max-width:800px;
+
     border-collapse:separate;
     border-spacing:0;
+
     background:#000;
-    border:2px solid;
-    border-image: linear-gradient(45deg, #d4af37, #f5d76e) 1;
-    border-radius:20px;
+
+    border:2px solid #d4af37;
+
+    border-radius:25px;
+
     overflow:hidden;
+
     backdrop-filter:blur(4px);
-    box-shadow: 0 0 30px rgba(212,175,55,0.3);
-    animation: pulse-glow 4s ease-in-out infinite;
+
+    box-shadow:
+        0 0 30px
+        rgba(212,175,55,.4);
+
+    animation:
+        pulse-glow
+        4s
+        ease-in-out
+        infinite;
 }
 
-th, td{
+
+th,
+td{
+
     padding:15px;
-    border-bottom:1px solid rgba(255,215,0,0.3);
+
+    border-bottom:
+    1px solid
+    rgba(255,215,0,.3);
+
 }
+
 
 th{
-    background:linear-gradient(90deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.2) 50%, rgba(212,175,55,0.1) 100%);
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(212,175,55,.1),
+        rgba(212,175,55,.2),
+        rgba(212,175,55,.1)
+    );
+
     color:#f5d76e;
-    text-shadow: 0 0 10px rgba(212,175,55,0.5);
+
+    text-shadow:
+    0 0 10px
+    rgba(212,175,55,.5);
+
 }
 
-tr:hover {
-    background: rgba(212,175,55,0.05);
-    transition: 0.3s ease;
+
+tr:hover{
+
+    background:
+    rgba(212,175,55,.05);
+
+    transition:.3s ease;
+
 }
+
 
 tr:last-child td{
+
     border-bottom:none;
+
 }
 
-/* ===== BOTÃO AGENDAR ===== */
+
+/* =====================================================
+   BOTÃO AGENDAR
+===================================================== */
+
 .agendar-btn{
+
     display:inline-block;
-    background:linear-gradient(45deg,#d4af37,#f7e08a);
+
+    background:
+    linear-gradient(
+        45deg,
+        #d4af37,
+        #f7e08a
+    );
+
     color:#000;
-    padding:10px 18px;
+
+    padding:
+    10px 18px;
+
     border-radius:30px;
+
     text-decoration:none;
-    transition:0.3s ease;
-    box-shadow:0 0 15px rgba(212,175,55,0.5);
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
-    font-style: italic;
-    font-weight: 700;
+
+    transition:.3s ease;
+
+    box-shadow:
+    0 0 15px
+    rgba(212,175,55,.5);
+
+    font-weight:bold;
+
+    border:none;
+
+    cursor:pointer;
+
 }
+
 
 .agendar-btn:hover{
+
     transform:scale(1.08);
-    box-shadow:0 0 30px rgba(212,175,55,1);
-    text-shadow: 0 0 5px rgba(0,0,0,0.3);
+
+    box-shadow:
+    0 0 30px
+    rgba(212,175,55,1);
+
 }
 
-.agendar-btn:active {
-    transform: scale(0.95);
+
+.agendar-btn:active{
+
+    transform:scale(.95);
+
 }
 
-/* ===== BANNER PROMOÇÃO ===== */
+
+/* =====================================================
+   BANNER PROMOÇÃO
+===================================================== */
+
 .promo-banner{
+
     margin:40px auto;
+
     width:95%;
+
     max-width:800px;
-    background:rgba(212,175,55,0.12);
-    border:2px solid gold;
+
+    background:
+    rgba(212,175,55,.12);
+
+    border:
+    2px solid gold;
+
     border-radius:25px;
+
     padding:25px;
+
     text-align:center;
-    box-shadow:0 0 30px rgba(212,175,55,0.4), inset 0 0 20px rgba(212,175,55,0.1);
+
+    box-shadow:
+    0 0 30px rgba(212,175,55,.4),
+    inset 0 0 20px rgba(212,175,55,.1);
+
     backdrop-filter:blur(4px);
-    animation: pulse-glow 3s ease-in-out infinite;
-    position: relative;
-    overflow: hidden;
+
+    animation:
+    pulse-glow
+    3s
+    ease-in-out
+    infinite;
+
+    position:relative;
+
+    overflow:hidden;
+
 }
 
-.promo-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: shimmer 3s infinite;
-    z-index: -1;
+
+.promo-banner::before{
+
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.2),
+        transparent
+    );
+
+    animation:
+    shimmer
+    3s
+    infinite;
+
+    z-index:-1;
+
 }
+
 
 .promo-banner h2{
+
     color:#d4af37;
+
     font-size:30px;
+
     margin-bottom:15px;
-    text-shadow: 0 0 15px rgba(212,175,55,0.7);
+
 }
+
 
 .promo-banner p{
+
     color:white;
+
     font-size:18px;
+
     line-height:1.6;
+
 }
+
 
 .promo-banner span{
+
     color:#f5d76e;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(212,175,55,0.6);
+
+    font-weight:bold;
+
 }
 
-.promo-banner .agendar-btn {
-    margin-top: 15px;
+
+.promo-banner .agendar-btn{
+
+    margin-top:15px;
+
 }
 
-/* ===== TÍTULO TABELA VALORES ===== */
-.tabela-titulo {
-    color: #d4af37;
-    font-size: 28px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 15px rgba(212,175,55,0.6);
-    animation: pulse-glow 3s ease-in-out infinite;
+
+/* =====================================================
+   TÍTULO TABELA
+===================================================== */
+
+.tabela-titulo{
+
+    color:#d4af37;
+
+    font-size:28px;
+
+    margin-top:40px;
+
+    margin-bottom:20px;
+
+    text-shadow:
+    0 0 15px
+    rgba(212,175,55,.6);
+
+    animation:
+    pulse-glow
+    3s
+    ease-in-out
+    infinite;
+
 }
+
+
+/* =====================================================
+   GALERIA
+===================================================== */
+
+.galeria{
+
+    width:95%;
+
+    max-width:800px;
+
+    margin:50px auto;
+
+    text-align:center;
+
+}
+
+
+.galeria h2{
+
+    color:#d4af37;
+
+    font-size:28px;
+
+    margin-bottom:25px;
+
+    text-shadow:
+    0 0 15px
+    rgba(212,175,55,.6);
+
+}
+
+
+/* =====================================================
+   CARROSSEL
+===================================================== */
+
+.carrossel{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:4 / 5;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    border:
+    2px solid
+    #d4af37;
+
+    box-shadow:
+    0 0 30px
+    rgba(212,175,55,.4);
+
+}
+
+
+.carrossel img{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    transition:
+    opacity .5s ease;
+
+}
+
+
+.carrossel img.ativo{
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   BOLINHAS
+===================================================== */
+
+.bolinhas{
+
+    margin-top:15px;
+
+}
+
+
+.bolinhas span{
+
+    display:inline-block;
+
+    width:10px;
+    height:10px;
+
+    margin:5px;
+
+    border-radius:50%;
+
+    background:#555;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.bolinhas span.ativa{
+
+    background:#d4af37;
+
+    box-shadow:
+    0 0 10px
+    #d4af37;
+
+    transform:scale(1.2);
+
+}
+
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
 
 footer{
+
     text-align:center;
+
     padding:30px;
+
     color:#aaa;
-    position: relative;
-    z-index: 1;
+
+    position:relative;
+
+    z-index:1;
+
 }
 
-/* ===== RESPONSIVO ===== */
-@media (max-width:768px){
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media(max-width:768px){
 
     .container{
+
         padding-top:20px;
+
     }
+
 
     .container h1{
+
         font-size:32px;
+
     }
 
-    th, td{
+
+    th,
+    td{
+
         font-size:13px;
+
         padding:10px;
+
     }
+
 
     .promo-banner h2{
+
         font-size:24px;
+
     }
+
 
     .promo-banner p{
+
         font-size:15px;
+
     }
 
-    .glow-left, .glow-right {
-        width: 300px;
-        height: 300px;
-        filter: blur(50px);
+
+    .glow-left,
+    .glow-right{
+
+        width:300px;
+
+        height:300px;
+
+        filter:blur(50px);
+
     }
 
-    .tabela-titulo {
-        font-size: 24px;
+
+    .tabela-titulo{
+
+        font-size:24px;
+
     }
 
-    .agendar-btn {
-        padding: 8px 14px;
-        font-size: 12px;
+
+    .agendar-btn{
+
+        padding:
+        8px 14px;
+
+        font-size:12px;
+
     }
+
+
+    .galeria h2{
+
+        font-size:24px;
+
+    }
+
 }
 
-/* ===== iOS SAFE AREA ===== */
-@supports (padding: max(0px)) {
-    body {
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
+
+/* =====================================================
+   IOS SAFE AREA
+===================================================== */
+
+@supports(padding:max(0px)){
+
+    body{
+
+        padding-left:
+        env(safe-area-inset-left);
+
+        padding-right:
+        env(safe-area-inset-right);
+
+        padding-top:
+        env(safe-area-inset-top);
+
+        padding-bottom:
+        env(safe-area-inset-bottom);
+
     }
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- IMAGEM FIXA -->
+
+<!-- =====================================================
+     FUNDO
+===================================================== -->
+
 <div class="banner"></div>
 
-<!-- OVERLAY DOURADO -->
 <div class="golden-overlay"></div>
 
-<!-- BRILHOS LATERAIS -->
 <div class="glow-left"></div>
+
 <div class="glow-right"></div>
 
-<!-- PARTÍCULAS DOURADAS -->
-<div class="particles" id="particles"></div>
+<div class="particles"
+     id="particles">
+</div>
 
-<!-- CONTEÚDO -->
+
+<!-- =====================================================
+     CONTEÚDO
+===================================================== -->
+
 <div class="container">
 
 
-    <!-- TÍTULO TABELA -->
-    <h1 class="tabela-titulo">✨ Tabela de Valores ✨</h1>
-    
+    <!-- TÍTULO -->
+
+    <h1 class="tabela-titulo">
+        ✨ Tabela de Valores ✨
+    </h1>
+
+
+    <!-- =================================================
+         TABELA
+    ================================================== -->
+
     <div class="table-wrapper">
 
         <table>
 
             <tr>
-    <td>Modelos</td>
-    <td>R$55</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Modelos - R$55')">Agendar</button>
-    </td>
-</tr>
 
-<tr>
-    <td>Gel na Fibra</td>
-    <td>R$120</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Gel na Fibra - R$120')">Agendar</button>
-    </td>
-</tr>
+                <td>Modelos</td>
 
-<tr>
-    <td>Molde F1</td>
-    <td>R$120</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Molde F1 - R$120')">Agendar</button>
-    </td>
-</tr>
+                <td>R$55</td>
 
-<tr>
-    <td>Blindagem</td>
-    <td>R$55</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Blindagem - R$55')">Agendar</button>
-    </td>
-</tr>
+                <td>
 
-<tr>
-    <td>Pedicure em Gel</td>
-    <td>R$65</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Pedicure em Gel - R$65')">Agendar</button>
-    </td>
-</tr>
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Modelos - R$55')">
 
-<tr>
-    <td>Esmaltação em Gel</td>
-    <td>R$60</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Esmaltação em Gel - R$60')">Agendar</button>
-    </td>
-</tr>
+                        Agendar
 
-<tr>
-    <td>Banho de Gel</td>
-    <td>R$75</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Banho de Gel - R$75')">Agendar</button>
-    </td>
-</tr>
+                    </button>
 
-<tr>
-    <td>Manutenção</td>
-    <td>R$100</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Manutenção - R$100')">Agendar</button>
-    </td>
-</tr>
+                </td>
 
-<tr>
-    <td>Manicure / Pedicure</td>
-    <td>R$20</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Manicure / Pedicure - R$20')">Agendar</button>
-    </td>
-</tr>
+            </tr>
 
-<tr>
-    <td>Manicure e Pedicure</td>
-    <td>R$35</td>
-    <td>
-        <button class="agendar-btn" onclick="agendar('Manicure e Pedicure - R$35')">Agendar</button>
-    </td>
-</tr>
+
+            <tr>
+
+                <td>Gel na Fibra</td>
+
+                <td>R$120</td>
+
+                <td>
+
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Gel na Fibra - R$120')">
+
+                        Agendar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Molde F1</td>
+
+                <td>R$120</td>
+
+                <td>
+
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Molde F1 - R$120')">
+
+                        Agendar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Blindagem</td>
+
+                <td>R$55</td>
+
+                <td>
+
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Blindagem - R$55')">
+
+                        Agendar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Pedicure em Gel</td>
+
+                <td>R$65</td>
+
+                <td>
+
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Pedicure em Gel - R$65')">
+
+                        Agendar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Esmaltação em Gel</td>
+
+                <td>R$60</td>
+
+                <td>
+
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Esmaltação em Gel - R$60')">
+
+                        Agendar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Banho de Gel</td>
+
+                <td>R$75</td>
+
+                <td>
+
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Banho de Gel - R$75')">
+
+                        Agendar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Manutenção</td>
+
+                <td>R$100</td>
+
+                <td>
+
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Manutenção - R$100')">
+
+                        Agendar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Manicure / Pedicure</td>
+
+                <td>R$20</td>
+
+                <td>
+
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Manicure / Pedicure - R$20')">
+
+                        Agendar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Manicure e Pedicure</td>
+
+                <td>R$35</td>
+
+                <td>
+
+                    <button
+                        class="agendar-btn"
+                        onclick="agendar('Manicure e Pedicure - R$35')">
+
+                        Agendar
+
+                    </button>
+
+                </td>
+
+            </tr>
 
         </table>
 
     </div>
 
+
 </div>
 
 
-
-<script>
-// Função para enviar mensagem WhatsApp
-function agendar(servico) {
-    const numeroWhatsApp = '5531998009842';
-    const mensagem = `Olá! Gostaria de agendar: ${servico}`;
-    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-    window.open(urlWhatsApp, '_blank');
-}
-
-// Criar partículas douradas animadas
-
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    const size = Math.random() * 6 + 2;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-    
-    const startX = Math.random() * window.innerWidth;
-    particle.style.left = startX + 'px';
-    particle.style.bottom = '-10px';
-    
-    const duration = Math.random() * 15 + 10;
-    particle.style.animationDuration = duration + 's';
-    
-    const delay = Math.random() * 5;
-    particle.style.animationDelay = delay + 's';
-    
-    particlesContainer.appendChild(particle);
-    
-    setTimeout(() => particle.remove(), duration * 1000);
-
-
-// Criar partículas a cada intervalo
-setInterval(createParticle, 500);
-
-// Criar partículas iniciais
-for (let i = 0; i < 10; i++) {
-    createParticle();
-}
-</script>
-
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./service-worker.js')
-    .then(() => console.log('PWA ativo'))
-    .catch(err => console.log(err));
-}
-</script>
-
-
-
-
-
-
-
-<!-- =========================
+<!-- =====================================================
      GALERIA DE TRABALHOS
-========================= -->
-
+===================================================== -->
 
 <section class="galeria">
 
-
-<h2>
-✨ Conheça meu trabalho ✨
-</h2>
-
+    <h2>
+        ✨ Conheça meu trabalho ✨
+    </h2>
 
 
-<div class="carrossel">
+    <div
+        class="carrossel"
+        id="carrossel">
+    </div>
 
 
-
-<img 
-src="trabalho1.jpg"
-class="ativo"
-alt="Trabalho de unha Bia Nails 1">
-
-
-
-<img 
-src="trabalho2.jpg"
-alt="Trabalho de unha Bia Nails 2">
-
-
-
-<img 
-src="trabalho3.jpg"
-alt="Trabalho de unha Bia Nails 3">
-
-
-
-<img 
-src="trabalho4.jpg"
-alt="Trabalho de unha Bia Nails 4">
-
-
-
-
-</div>
-
-
-
-
-<div class="bolinhas">
-
-
-<span class="ativa"></span>
-
-<span></span>
-
-<span></span>
-
-<span></span>
-
-<span></span>
-
-
-</div>
-
-
+    <div
+        class="bolinhas"
+        id="bolinhas">
+    </div>
 
 </section>
 
 
-
-
-</div>
-
-
-
-<!-- =========================
+<!-- =====================================================
      RODAPÉ
-========================= -->
-
+===================================================== -->
 
 <footer>
 
+    © 2026 Bia Nails
 
-© 2026 Bia Nails  
-<br>
-Luxo & Elegância ✨
+    <br>
 
+    Luxo & Elegância ✨
 
 </footer>
 
 
-
-
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
 
-/* =========================
+/* =====================================================
    WHATSAPP
-========================= */
-
+===================================================== */
 
 function agendar(servico){
 
-
-const numeroWhatsApp = "5531998009842";
-
-
-const mensagem = 
-`Olá! Gostaria de agendar: ${servico}`;
+    const numeroWhatsApp =
+        "5531998009842";
 
 
-
-const url = 
-"https://wa.me/" 
-+ numeroWhatsApp 
-+ "?text=" 
-+ encodeURIComponent(mensagem);
+    const mensagem =
+        `Olá! Gostaria de agendar: ${servico}`;
 
 
+    const url =
+        "https://wa.me/"
+        + numeroWhatsApp
+        + "?text="
+        + encodeURIComponent(mensagem);
 
-window.open(url,"_blank");
 
+    window.open(
+        url,
+        "_blank"
+    );
 
 }
 
 
-
-
-
-/* =========================
+/* =====================================================
    PARTÍCULAS DOURADAS
-========================= */
+===================================================== */
 
-
-const particlesContainer = 
-document.getElementById("particles");
-
+const particlesContainer =
+    document.getElementById("particles");
 
 
 function criarParticula(){
 
-
-const particle = 
-document.createElement("div");
-
+    const particle =
+        document.createElement("div");
 
 
-particle.className = "particle";
+    particle.className =
+        "particle";
 
 
-
-const tamanho = 
-Math.random() * 6 + 2;
-
+    const tamanho =
+        Math.random() * 6 + 2;
 
 
-particle.style.width = 
-tamanho + "px";
+    particle.style.width =
+        tamanho + "px";
 
 
-
-particle.style.height = 
-tamanho + "px";
-
+    particle.style.height =
+        tamanho + "px";
 
 
-particle.style.left = 
-Math.random() * window.innerWidth + "px";
+    particle.style.left =
+        Math.random()
+        * window.innerWidth
+        + "px";
 
 
-
-particle.style.bottom = "-10px";
-
-
-
-const duracao =
-Math.random() * 15 + 10;
+    particle.style.bottom =
+        "-10px";
 
 
-
-particle.style.animationDuration =
-duracao + "s";
-
+    const duracao =
+        Math.random() * 15 + 10;
 
 
-particle.style.animationDelay =
-Math.random() * 5 + "s";
+    particle.style.animationDuration =
+        duracao + "s";
 
 
-
-particlesContainer.appendChild(particle);
-
-
-
-setTimeout(()=>{
+    particle.style.animationDelay =
+        Math.random() * 5
+        + "s";
 
 
-particle.remove();
+    particlesContainer.appendChild(
+        particle
+    );
 
 
-}, duracao * 1000);
+    setTimeout(() => {
 
+        particle.remove();
 
+    }, duracao * 1000);
 
 }
 
 
-
-
-
-setInterval(criarParticula,500);
-
+setInterval(
+    criarParticula,
+    500
+);
 
 
 for(let i = 0; i < 15; i++){
 
-
-criarParticula();
-
+    criarParticula();
 
 }
 
 
+/* =====================================================
+   GALERIA — CARREGA FOTOS DO JSON
+===================================================== */
 
+let imagens = [];
 
-
-
-/* =========================
-   CARROSSEL GALERIA
-========================= */
-
-
-const imagens =
-document.querySelectorAll(".carrossel img");
-
-
-
-const bolinhas =
-document.querySelectorAll(".bolinhas span");
-
-
+let bolinhas = [];
 
 let indice = 0;
 
+let intervalo;
 
 
+/* =====================================================
+   BUSCAR FOTOS
+===================================================== */
 
-function trocarImagem(numero){
-
-
-imagens.forEach(img=>{
-
-img.classList.remove("ativo");
-
-});
-
-
-
-bolinhas.forEach(dot=>{
-
-dot.classList.remove("ativa");
-
-});
-
-
-
-imagens[numero]
-.classList.add("ativo");
-
-
-
-bolinhas[numero]
-.classList.add("ativa");
-
-
-
-indice = numero;
-
-
-}
-
-
-
-
-function proximaImagem(){
-
-
-indice++;
-
-
-if(indice >= imagens.length){
-
-indice = 0;
-
-}
-
-
-trocarImagem(indice);
-
-
-}
-
-
-
-
-
-let intervalo = 
-setInterval(proximaImagem,4000);
-
-
-
-
-
-bolinhas.forEach((bolinha,index)=>{
-
-
-bolinha.addEventListener("click",()=>{
-
-
-clearInterval(intervalo);
-
-
-trocarImagem(index);
-
-
-
-intervalo =
-setInterval(proximaImagem,4000);
-
-
-
-});
-
-
-});
-
-
-
-
-
-/* =========================
-   PWA SERVICE WORKER
-========================= */
-
-
-if("serviceWorker" in navigator){
-
-
-window.addEventListener("load",()=>{
-
-
-navigator.serviceWorker.register(
-"service-worker.js"
+fetch(
+    "fotos.json?versao="
+    + Date.now()
 )
 
+.then(resposta => {
 
-.then(()=>{
+    if(!resposta.ok){
 
+        throw new Error(
+            "Não foi possível carregar fotos.json"
+        );
 
-console.log(
-"Bia Nails PWA ativo"
-);
+    }
 
+    return resposta.json();
 
 })
 
 
-.catch((erro)=>{
+.then(dados => {
 
 
-console.log(
-"Erro PWA:",
-erro
-);
+    const carrossel =
+        document.getElementById(
+            "carrossel"
+        );
 
+
+    const dots =
+        document.getElementById(
+            "bolinhas"
+        );
+
+
+    dados.fotos.forEach(
+        (foto, i) => {
+
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+
+            img.src = foto;
+
+
+            img.alt =
+                "Trabalho Bia Nails";
+
+
+            if(i === 0){
+
+                img.classList.add(
+                    "ativo"
+                );
+
+            }
+
+
+            carrossel.appendChild(
+                img
+            );
+
+
+            const dot =
+                document.createElement(
+                    "span"
+                );
+
+
+            if(i === 0){
+
+                dot.classList.add(
+                    "ativa"
+                );
+
+            }
+
+
+            dot.addEventListener(
+                "click",
+                () => {
+
+                    trocar(i);
+
+                }
+            );
+
+
+            dots.appendChild(
+                dot
+            );
+
+        }
+    );
+
+
+    imagens =
+        document.querySelectorAll(
+            ".carrossel img"
+        );
+
+
+    bolinhas =
+        document.querySelectorAll(
+            ".bolinhas span"
+        );
+
+
+    if(imagens.length > 1){
+
+        intervalo =
+            setInterval(
+                proxima,
+                4000
+            );
+
+    }
+
+})
+
+
+.catch(erro => {
+
+    console.error(
+        "Erro ao carregar galeria:",
+        erro
+    );
 
 });
 
 
-});
+/* =====================================================
+   TROCAR FOTO
+===================================================== */
 
+function trocar(numero){
+
+    if(!imagens.length){
+
+        return;
+
+    }
+
+
+    imagens[indice]
+        .classList
+        .remove("ativo");
+
+
+    if(bolinhas[indice]){
+
+        bolinhas[indice]
+            .classList
+            .remove("ativa");
+
+    }
+
+
+    indice =
+        numero;
+
+
+    imagens[indice]
+        .classList
+        .add("ativo");
+
+
+    if(bolinhas[indice]){
+
+        bolinhas[indice]
+            .classList
+            .add("ativa");
+
+    }
+
+}
+
+
+/* =====================================================
+   PRÓXIMA FOTO
+===================================================== */
+
+function proxima(){
+
+    if(!imagens.length){
+
+        return;
+
+    }
+
+
+    trocar(
+        (indice + 1)
+        % imagens.length
+    );
+
+}
+
+
+/* =====================================================
+   SERVICE WORKER / PWA
+===================================================== */
+
+if(
+    "serviceWorker"
+    in navigator
+){
+
+    window.addEventListener(
+        "load",
+        () => {
+
+
+            navigator.serviceWorker
+                .register(
+                    "service-worker.js"
+                )
+
+
+                .then(
+                    registro => {
+
+                        console.log(
+                            "Bia Nails PWA ativo"
+                        );
+
+
+                        console.log(
+                            "Service Worker:",
+                            registro
+                        );
+
+                    }
+                )
+
+
+                .catch(
+                    erro => {
+
+                        console.log(
+                            "Erro PWA:",
+                            erro
+                        );
+
+                    }
+                );
+
+        }
+    );
 
 }
 
 
 </script>
+
 
 </body>
 
