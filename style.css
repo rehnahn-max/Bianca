@@ -1,6 +1,6 @@
-/* =========================
+/* =====================================================
    GALERIA BIA NAILS
-========================= */
+===================================================== */
 
 .galeria{
 
@@ -18,188 +18,9 @@
 
 }
 
-.carrossel{
-
-    position:relative;
-
-    width:100%;
-
-    aspect-ratio:4 / 5;
-
-    overflow:hidden;
-
-    border-radius:28px;
-
-    border:
-    2px solid
-    #d4af37;
-
-    box-shadow:
-    0 0 30px
-    rgba(212,175,55,.4);
-
-    background:#050505;
-
-    touch-action:pan-y;
-
-    cursor:grab;
-
-}
-
-
-
-.carrossel img{
-
-    position:absolute;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-    opacity:0;
-
-    transition:opacity 1s ease;
-
-}
-
-
-
-.carrossel img.ativo{
-
-    opacity:1;
-
-}
-
-
-
-.bolinhas{
-
-    margin-top:20px;
-
-}
-
-
-
-.bolinhas span{
-
-    display:inline-block;
-
-    width:12px;
-
-    height:12px;
-
-    margin:5px;
-
-    border-radius:50%;
-
-    background:#555;
-
-    cursor:pointer;
-
-}
-
-
-
-.bolinhas span.ativa{
-
-    background:#d4af37;
-
-    box-shadow:
-    0 0 10px #d4af37;
-
-}
-
-
-
-/* CELULAR */
-
-@media(max-width:768px){
-
-
-.carrossel{
-
-    height:350px;
-
-}
-
-
-}
-
-
-@media(max-width:480px){
-
-
-.carrossel{
-
-    height:300px;
-
-}
-
-
-}
-
-/* TESTE GALERIA */
-
-.galeria h3,
-.tabela-titulo{
-
-    font-size:28px;
-
-}
-
-
-.carrossel {
-
-    position:relative;
-
-    width:100%;
-
-    height:450px;
-
-    overflow:hidden;
-
-    border-radius:25px;
-
-}
-
-
-
-.carrossel img {
-
-    position:absolute !important;
-
-    top:0;
-
-    left:0;
-
-    width:100% !important;
-
-    height:100% !important;
-
-    object-fit:cover;
-
-    display:block;
-
-    opacity:0;
-
-}
-
-
-
-.carrossel img.ativo {
-
-    opacity:1;
-
-}
 
 /* =====================================================
-   BRILHO DOURADO DOS TÍTULOS
+   TÍTULOS — GALERIA E TABELA
 ===================================================== */
 
 .galeria h2,
@@ -226,6 +47,11 @@
 
 }
 
+
+/* =====================================================
+   TÍTULO DA TABELA — SEM TARJA
+===================================================== */
+
 .tabela-titulo{
 
     display:block;
@@ -240,7 +66,150 @@
 
 
 /* =====================================================
-   PULSAÇÃO SOMENTE DAS LETRAS
+   CARROSSEL
+===================================================== */
+
+.carrossel{
+
+    position:relative;
+
+    width:100%;
+
+    height:520px;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    border:
+    2px solid
+    #d4af37;
+
+    box-shadow:
+    0 0 30px
+    rgba(212,175,55,.4);
+
+    background:#050505;
+
+    touch-action:pan-y;
+
+    cursor:grab;
+
+}
+
+
+/* =====================================================
+   CURSOR AO ARRASTAR
+===================================================== */
+
+.carrossel:active{
+
+    cursor:grabbing;
+
+}
+
+
+/* =====================================================
+   FOTOS
+===================================================== */
+
+.carrossel img{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    opacity:0;
+
+    transition:
+        opacity 1s ease;
+
+    display:block;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+    pointer-events:none;
+
+}
+
+
+/* =====================================================
+   FOTO ATIVA
+===================================================== */
+
+.carrossel img.ativo{
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   BOLINHAS
+===================================================== */
+
+.bolinhas{
+
+    margin-top:20px;
+
+}
+
+
+/* =====================================================
+   CADA BOLINHA
+===================================================== */
+
+.bolinhas span{
+
+    display:inline-block;
+
+    width:12px;
+
+    height:12px;
+
+    margin:5px;
+
+    border-radius:50%;
+
+    background:#555;
+
+    cursor:pointer;
+
+    transition:
+        .3s ease;
+
+}
+
+
+/* =====================================================
+   BOLINHA ATIVA
+===================================================== */
+
+.bolinhas span.ativa{
+
+    background:#d4af37;
+
+    box-shadow:
+        0 0 10px #d4af37;
+
+    transform:
+        scale(1.15);
+
+}
+
+
+/* =====================================================
+   BRILHO DOURADO SOMENTE NAS LETRAS
 ===================================================== */
 
 @keyframes brilho-texto{
@@ -254,6 +223,7 @@
 
     }
 
+
     50%{
 
         text-shadow:
@@ -263,12 +233,92 @@
 
     }
 
+
     100%{
 
         text-shadow:
             0 0 6px rgba(212,175,55,.5),
             0 0 12px rgba(212,175,55,.4),
             0 0 20px rgba(212,175,55,.2);
+
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVO — TABLET / CELULAR
+===================================================== */
+
+@media(max-width:768px){
+
+    .galeria{
+
+        width:95%;
+
+        max-width:800px;
+
+        margin-top:10px;
+
+        margin-bottom:45px;
+
+    }
+
+
+    .galeria h2,
+    .tabela-titulo{
+
+        font-size:28px;
+
+    }
+
+
+    .carrossel{
+
+        aspect-ratio:4 / 5;
+
+        border-radius:24px;
+
+    }
+
+}
+
+
+/* =====================================================
+   CELULARES PEQUENOS
+===================================================== */
+
+@media(max-width:480px){
+
+    .galeria h2,
+    .tabela-titulo{
+
+        font-size:26px;
+
+    }
+
+
+    .carrossel{
+
+        border-radius:22px;
+
+    }
+
+
+    .bolinhas{
+
+        margin-top:15px;
+
+    }
+
+
+    .bolinhas span{
+
+        width:10px;
+
+        height:10px;
+
+        margin:4px;
 
     }
 
