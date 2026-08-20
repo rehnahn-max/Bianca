@@ -29,9 +29,6 @@
     <link rel="apple-touch-icon"
           href="icon-192.png">
 
-    <link rel="stylesheet"
-          href="style.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap"
           rel="stylesheet">
 
@@ -46,21 +43,36 @@
 
     margin:0;
     padding:0;
+
     box-sizing:border-box;
 
     font-family:'Open Sans', sans-serif;
 
     font-style:italic;
+
     font-weight:700;
+
+}
+
+
+html{
+
+    width:100%;
+
+    overflow-x:hidden;
 
 }
 
 
 body{
 
+    width:100%;
+
+    min-height:100vh;
+
     background:#000;
 
-    color:white;
+    color:#fff;
 
     overflow-x:hidden;
 
@@ -121,21 +133,72 @@ body{
 }
 
 
+@keyframes brilho-texto{
+
+    0%{
+
+        text-shadow:
+
+        0 0 5px
+        rgba(212,175,55,.4),
+
+        0 0 12px
+        rgba(212,175,55,.3),
+
+        0 0 20px
+        rgba(212,175,55,.2);
+
+    }
+
+    50%{
+
+        text-shadow:
+
+        0 0 8px
+        rgba(212,175,55,.9),
+
+        0 0 18px
+        rgba(212,175,55,.8),
+
+        0 0 30px
+        rgba(212,175,55,.6);
+
+    }
+
+    100%{
+
+        text-shadow:
+
+        0 0 5px
+        rgba(212,175,55,.4),
+
+        0 0 12px
+        rgba(212,175,55,.3),
+
+        0 0 20px
+        rgba(212,175,55,.2);
+
+    }
+
+}
+
+
 @keyframes pulse-glow{
 
-    0%,100%{
+    0%,
+    100%{
 
         box-shadow:
-        0 0 20px
-        rgba(212,175,55,.5);
+        0 0 15px
+        rgba(212,175,55,.35);
 
     }
 
     50%{
 
         box-shadow:
-        0 0 40px
-        rgba(212,175,55,.9);
+        0 0 30px
+        rgba(212,175,55,.65);
 
     }
 
@@ -145,63 +208,18 @@ body{
 @keyframes shimmer{
 
     0%{
-        background-position:-1000px 0;
+
+        background-position:
+        -1000px 0;
+
     }
 
     100%{
-        background-position:1000px 0;
+
+        background-position:
+        1000px 0;
+
     }
-
-}
-
-
-/* =====================================================
-   PARTÍCULAS
-===================================================== */
-
-.particles{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    z-index:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
-
-}
-
-
-.particle{
-
-    position:absolute;
-
-    width:4px;
-    height:4px;
-
-    background:
-    radial-gradient(
-        circle,
-        #d4af37,
-        #f5d76e
-    );
-
-    border-radius:50%;
-
-    box-shadow:
-    0 0 10px
-    rgba(212,175,55,.8);
-
-    animation:
-    float-up
-    linear
-    infinite;
 
 }
 
@@ -229,7 +247,7 @@ body{
 
     opacity:.35;
 
-    z-index:-1;
+    z-index:-3;
 
 }
 
@@ -257,7 +275,7 @@ body{
 
     pointer-events:none;
 
-    z-index:0;
+    z-index:-1;
 
     animation:
     brilho-dourado
@@ -269,7 +287,7 @@ body{
 
 
 /* =====================================================
-   BRILHOS LATERAIS
+   BRILHO LATERAL
 ===================================================== */
 
 .glow-left{
@@ -300,7 +318,7 @@ body{
     ease-in-out
     infinite;
 
-    z-index:0;
+    z-index:-1;
 
     pointer-events:none;
 
@@ -335,7 +353,7 @@ body{
     ease-in-out
     infinite;
 
-    z-index:0;
+    z-index:-1;
 
     pointer-events:none;
 
@@ -343,22 +361,71 @@ body{
 
 
 /* =====================================================
-   CONTEÚDO
+   PARTÍCULAS
+===================================================== */
+
+.particles{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+
+.particle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        #d4af37,
+        #f5d76e
+    );
+
+    box-shadow:
+    0 0 10px
+    rgba(212,175,55,.8);
+
+    animation:
+    float-up
+    linear
+    infinite;
+
+}
+
+
+/* =====================================================
+   CONTEÚDO PRINCIPAL
 ===================================================== */
 
 .container{
 
     position:relative;
 
-    padding:
-    20px
-    20px
-    60px
-    20px;
-
-    text-align:center;
-
     z-index:1;
+
+    width:100%;
+
+    max-width:840px;
+
+    margin:0 auto;
+
+    padding:
+    0 20px 50px;
 
 }
 
@@ -369,38 +436,64 @@ body{
 
 .galeria{
 
-    width:98%;
-
-    max-width:900px;
-
-    margin:20px auto 55px;
-
-    text-align:center;
-
     position:relative;
 
     z-index:2;
 
-}
+    width:100%;
 
+    max-width:800px;
 
-.galeria h2{
+    margin:
+    25px auto 45px;
 
-    color:#d4af37;
-
-    font-size:30px;
-
-    margin-bottom:25px;
-
-    text-shadow:
-    0 0 15px
-    rgba(212,175,55,.6);
+    text-align:center;
 
 }
 
 
 /* =====================================================
-   CARROSSEL MAIOR
+   TÍTULO GALERIA
+===================================================== */
+
+.galeria h2{
+
+    color:#d4af37;
+
+    font-size:34px;
+
+    line-height:1.2;
+
+    margin:
+    0 0 22px;
+
+    background:transparent;
+
+    border:none;
+
+    box-shadow:none;
+
+    text-shadow:
+    0 0 8px
+    rgba(212,175,55,.7),
+
+    0 0 18px
+    rgba(212,175,55,.6),
+
+    0 0 30px
+    rgba(212,175,55,.4);
+
+    animation:
+    brilho-texto
+    3s
+    ease-in-out
+    infinite;
+
+}
+
+
+/* =====================================================
+   QUADRO DA GALERIA
 ===================================================== */
 
 .carrossel{
@@ -409,21 +502,21 @@ body{
 
     width:100%;
 
-    aspect-ratio:4 / 5;
+    height:500px;
 
     overflow:hidden;
-
-    border-radius:28px;
 
     border:
     2px solid
     #d4af37;
 
+    border-radius:26px;
+
+    background:#050505;
+
     box-shadow:
     0 0 30px
     rgba(212,175,55,.4);
-
-    background:#050505;
 
     touch-action:pan-y;
 
@@ -432,12 +525,20 @@ body{
 }
 
 
+/* =====================================================
+   QUADRO SENDO ARRASTADO
+===================================================== */
+
 .carrossel:active{
 
     cursor:grabbing;
 
 }
 
+
+/* =====================================================
+   FOTOS
+===================================================== */
 
 .carrossel img{
 
@@ -446,15 +547,15 @@ body{
     top:0;
     left:0;
 
-    width:50%;
-    height:50%;
+    width:100%;
+    height:100%;
 
     object-fit:contain;
 
     opacity:0;
 
     transition:
-    opacity .5s ease;
+    opacity 1s ease;
 
     display:block;
 
@@ -467,26 +568,13 @@ body{
 }
 
 
+/* =====================================================
+   FOTO ATIVA
+===================================================== */
+
 .carrossel img.ativo{
 
     opacity:1;
-
-}
-
-
-/* =====================================================
-   ERRO GALERIA
-===================================================== */
-
-.galeria-erro{
-
-    padding:30px 15px;
-
-    color:#d4af37;
-
-    font-size:16px;
-
-    text-align:center;
 
 }
 
@@ -497,7 +585,12 @@ body{
 
 .bolinhas{
 
-    margin-top:15px;
+    width:100%;
+
+    margin:
+    16px auto 0;
+
+    text-align:center;
 
 }
 
@@ -506,10 +599,11 @@ body{
 
     display:inline-block;
 
-    width:10px;
-    height:10px;
+    width:11px;
+    height:11px;
 
-    margin:5px;
+    margin:
+    4px;
 
     border-radius:50%;
 
@@ -517,7 +611,8 @@ body{
 
     cursor:pointer;
 
-    transition:.3s;
+    transition:
+    .3s ease;
 
 }
 
@@ -530,7 +625,8 @@ body{
     0 0 10px
     #d4af37;
 
-    transform:scale(1.2);
+    transform:
+    scale(1.2);
 
 }
 
@@ -541,20 +637,41 @@ body{
 
 .tabela-titulo{
 
+    display:block;
+
+    width:100%;
+
     color:#d4af37;
 
-    font-size:30px;
+    font-size:34px;
 
-    margin-top:15px;
+    line-height:1.2;
 
-    margin-bottom:25px;
+    text-align:center;
+
+    margin:
+    0 0 25px;
+
+    padding:0;
+
+    background:transparent;
+
+    border:none;
+
+    box-shadow:none;
 
     text-shadow:
-    0 0 15px
-    rgba(212,175,55,.6);
+    0 0 8px
+    rgba(212,175,55,.7),
+
+    0 0 18px
+    rgba(212,175,55,.6),
+
+    0 0 30px
+    rgba(212,175,55,.4);
 
     animation:
-    pulse-glow
+    brilho-texto
     3s
     ease-in-out
     infinite;
@@ -568,18 +685,18 @@ body{
 
 .table-wrapper{
 
+    width:100%;
+
     display:flex;
 
     justify-content:center;
-
-    margin-top:20px;
 
 }
 
 
 table{
 
-    width:95%;
+    width:100%;
 
     max-width:800px;
 
@@ -589,23 +706,16 @@ table{
 
     background:#000;
 
-    border:2px solid;
-
-    border-image:
-    linear-gradient(
-        45deg,
-        #d4af37,
-        #f5d76e
-    ) 1;
+    border:
+    2px solid
+    #d4af37;
 
     border-radius:20px;
 
     overflow:hidden;
 
-    backdrop-filter:blur(4px);
-
     box-shadow:
-    0 0 30px
+    0 0 25px
     rgba(212,175,55,.3);
 
     animation:
@@ -616,6 +726,10 @@ table{
 
 }
 
+
+/* =====================================================
+   CÉLULAS
+===================================================== */
 
 th,
 td{
@@ -652,8 +766,6 @@ tr:hover{
 
     background:
     rgba(212,175,55,.05);
-
-    transition:.3s ease;
 
 }
 
@@ -706,7 +818,8 @@ tr:last-child td{
 
 .agendar-btn:hover{
 
-    transform:scale(1.08);
+    transform:
+    scale(1.08);
 
     box-shadow:
     0 0 30px
@@ -717,7 +830,8 @@ tr:last-child td{
 
 .agendar-btn:active{
 
-    transform:scale(.95);
+    transform:
+    scale(.95);
 
 }
 
@@ -728,7 +842,8 @@ tr:last-child td{
 
 .promo-banner{
 
-    margin:40px auto;
+    margin:
+    40px auto;
 
     width:95%;
 
@@ -738,7 +853,8 @@ tr:last-child td{
     rgba(212,175,55,.12);
 
     border:
-    2px solid gold;
+    2px solid
+    gold;
 
     border-radius:25px;
 
@@ -747,8 +863,11 @@ tr:last-child td{
     text-align:center;
 
     box-shadow:
-    0 0 30px rgba(212,175,55,.4),
-    inset 0 0 20px rgba(212,175,55,.1);
+    0 0 30px
+    rgba(212,175,55,.4),
+
+    inset 0 0 20px
+    rgba(212,175,55,.1);
 
     backdrop-filter:blur(4px);
 
@@ -790,46 +909,6 @@ tr:last-child td{
     3s
     infinite;
 
-    z-index:-1;
-
-}
-
-
-.promo-banner h2{
-
-    color:#d4af37;
-
-    font-size:30px;
-
-    margin-bottom:15px;
-
-}
-
-
-.promo-banner p{
-
-    color:white;
-
-    font-size:18px;
-
-    line-height:1.6;
-
-}
-
-
-.promo-banner span{
-
-    color:#f5d76e;
-
-    font-weight:bold;
-
-}
-
-
-.promo-banner .agendar-btn{
-
-    margin-top:15px;
-
 }
 
 
@@ -853,41 +932,41 @@ footer{
 
 
 /* =====================================================
-   RESPONSIVO
+   TABLET
 ===================================================== */
 
 @media(max-width:768px){
 
     .container{
 
-        padding-top:10px;
+        padding:
+        0 15px 45px;
 
     }
 
 
     .galeria{
 
-        width:96%;
+        width:100%;
 
-        margin-top:10px;
-
-        margin-bottom:45px;
+        margin:
+        15px auto 40px;
 
     }
 
 
     .galeria h2{
 
-        font-size:24px;
+        font-size:29px;
 
-        margin-bottom:20px;
+        margin-bottom:18px;
 
     }
 
 
     .carrossel{
 
-        aspect-ratio:4 / 5;
+        height:420px;
 
         border-radius:24px;
 
@@ -896,9 +975,9 @@ footer{
 
     .tabela-titulo{
 
-        font-size:24px;
+        font-size:29px;
 
-        margin-top:10px;
+        margin-bottom:20px;
 
     }
 
@@ -909,6 +988,16 @@ footer{
         font-size:13px;
 
         padding:10px;
+
+    }
+
+
+    .agendar-btn{
+
+        padding:
+        8px 14px;
+
+        font-size:12px;
 
     }
 
@@ -926,15 +1015,79 @@ footer{
 
     }
 
+}
 
-    .glow-left,
-    .glow-right{
 
-        width:300px;
+/* =====================================================
+   CELULAR PEQUENO
+===================================================== */
 
-        height:300px;
+@media(max-width:480px){
 
-        filter:blur(50px);
+    .container{
+
+        padding:
+        0 10px 40px;
+
+    }
+
+
+    .galeria{
+
+        width:100%;
+
+        margin-top:10px;
+
+    }
+
+
+    .galeria h2{
+
+        font-size:25px;
+
+    }
+
+
+    .carrossel{
+
+        height:350px;
+
+        border-radius:22px;
+
+    }
+
+
+    .tabela-titulo{
+
+        font-size:25px;
+
+    }
+
+
+    .bolinhas{
+
+        margin-top:12px;
+
+    }
+
+
+    .bolinhas span{
+
+        width:10px;
+
+        height:10px;
+
+        margin:4px;
+
+    }
+
+
+    th,
+    td{
+
+        font-size:12px;
+
+        padding:8px 5px;
 
     }
 
@@ -942,9 +1095,9 @@ footer{
     .agendar-btn{
 
         padding:
-        8px 14px;
+        7px 10px;
 
-        font-size:12px;
+        font-size:11px;
 
     }
 
@@ -1001,45 +1154,39 @@ footer{
 
 
 <!-- =====================================================
-     GALERIA — AGORA PRIMEIRO
+     GALERIA — PRIMEIRO
 ===================================================== -->
 
 <section class="galeria">
 
     <h2>
-
         ✨ Conheça meu trabalho ✨
-
     </h2>
 
 
     <div
         class="carrossel"
         id="carrossel">
-
     </div>
 
 
     <div
         class="bolinhas"
         id="bolinhas">
-
     </div>
 
 </section>
 
 
 <!-- =====================================================
-     TABELA DE PREÇOS — AGORA ABAIXO DA GALERIA
+     TABELA
 ===================================================== -->
 
 <div class="container">
 
 
     <h1 class="tabela-titulo">
-
         ✨ Tabela de Valores ✨
-
     </h1>
 
 
@@ -1050,9 +1197,13 @@ footer{
 
             <tr>
 
-                <td>Modelos</td>
+                <td>
+                    Modelos
+                </td>
 
-                <td>R$55</td>
+                <td>
+                    R$55
+                </td>
 
                 <td>
 
@@ -1071,9 +1222,13 @@ footer{
 
             <tr>
 
-                <td>Gel na Fibra</td>
+                <td>
+                    Gel na Fibra
+                </td>
 
-                <td>R$120</td>
+                <td>
+                    R$120
+                </td>
 
                 <td>
 
@@ -1092,9 +1247,13 @@ footer{
 
             <tr>
 
-                <td>Molde F1</td>
+                <td>
+                    Molde F1
+                </td>
 
-                <td>R$120</td>
+                <td>
+                    R$120
+                </td>
 
                 <td>
 
@@ -1113,9 +1272,13 @@ footer{
 
             <tr>
 
-                <td>Blindagem</td>
+                <td>
+                    Blindagem
+                </td>
 
-                <td>R$55</td>
+                <td>
+                    R$55
+                </td>
 
                 <td>
 
@@ -1134,9 +1297,13 @@ footer{
 
             <tr>
 
-                <td>Pedicure em Gel</td>
+                <td>
+                    Pedicure em Gel
+                </td>
 
-                <td>R$65</td>
+                <td>
+                    R$65
+                </td>
 
                 <td>
 
@@ -1155,9 +1322,13 @@ footer{
 
             <tr>
 
-                <td>Esmaltação em Gel</td>
+                <td>
+                    Esmaltação em Gel
+                </td>
 
-                <td>R$60</td>
+                <td>
+                    R$60
+                </td>
 
                 <td>
 
@@ -1176,9 +1347,13 @@ footer{
 
             <tr>
 
-                <td>Banho de Gel</td>
+                <td>
+                    Banho de Gel
+                </td>
 
-                <td>R$75</td>
+                <td>
+                    R$75
+                </td>
 
                 <td>
 
@@ -1197,9 +1372,13 @@ footer{
 
             <tr>
 
-                <td>Manutenção</td>
+                <td>
+                    Manutenção
+                </td>
 
-                <td>R$100</td>
+                <td>
+                    R$100
+                </td>
 
                 <td>
 
@@ -1218,9 +1397,13 @@ footer{
 
             <tr>
 
-                <td>Manicure / Pedicure</td>
+                <td>
+                    Manicure / Pedicure
+                </td>
 
-                <td>R$20</td>
+                <td>
+                    R$20
+                </td>
 
                 <td>
 
@@ -1239,9 +1422,13 @@ footer{
 
             <tr>
 
-                <td>Manicure e Pedicure</td>
+                <td>
+                    Manicure e Pedicure
+                </td>
 
-                <td>R$35</td>
+                <td>
+                    R$35
+                </td>
 
                 <td>
 
@@ -1261,7 +1448,6 @@ footer{
         </table>
 
     </div>
-
 
 </div>
 
@@ -1377,11 +1563,14 @@ function criarParticula(){
     );
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        particle.remove();
+            particle.remove();
 
-    }, (duracao + 5) * 1000);
+        },
+        (duracao + 5) * 1000
+    );
 
 }
 
@@ -1392,7 +1581,11 @@ setInterval(
 );
 
 
-for(let i = 0; i < 15; i++){
+for(
+    let i = 0;
+    i < 15;
+    i++
+){
 
     criarParticula();
 
@@ -1413,7 +1606,7 @@ let intervalo = null;
 
 
 /* =====================================================
-   CARREGAR FOTOS.JSON
+   CARREGAR GALERIA
 ===================================================== */
 
 async function carregarGaleria(){
@@ -1461,18 +1654,7 @@ async function carregarGaleria(){
         ){
 
             throw new Error(
-                "O fotos.json não possui uma lista de fotos válida."
-            );
-
-        }
-
-
-        if(
-            dados.fotos.length === 0
-        ){
-
-            throw new Error(
-                "Nenhuma foto foi encontrada."
+                "fotos.json inválido"
             );
 
         }
@@ -1487,19 +1669,19 @@ async function carregarGaleria(){
             (foto, i) => {
 
 
-                let nomeFoto =
+                let caminho =
                     String(foto).trim();
 
 
                 if(
-                    !nomeFoto.startsWith("./") &&
-                    !nomeFoto.startsWith("/") &&
-                    !nomeFoto.startsWith("http")
+                    !caminho.startsWith("./") &&
+                    !caminho.startsWith("/") &&
+                    !caminho.startsWith("http")
                 ){
 
-                    nomeFoto =
+                    caminho =
                         "./"
-                        + nomeFoto;
+                        + caminho;
 
                 }
 
@@ -1511,7 +1693,7 @@ async function carregarGaleria(){
 
 
                 img.src =
-                    nomeFoto;
+                    caminho;
 
 
                 img.alt =
@@ -1522,17 +1704,9 @@ async function carregarGaleria(){
                     false;
 
 
-                img.loading =
+                if(
                     i === 0
-                    ? "eager"
-                    : "lazy";
-
-
-                img.decoding =
-                    "async";
-
-
-                if(i === 0){
+                ){
 
                     img.classList.add(
                         "ativo"
@@ -1546,8 +1720,8 @@ async function carregarGaleria(){
                     () => {
 
                         console.error(
-                            "Erro ao carregar:",
-                            nomeFoto
+                            "Erro ao carregar foto:",
+                            caminho
                         );
 
                     }
@@ -1565,7 +1739,9 @@ async function carregarGaleria(){
                     );
 
 
-                if(i === 0){
+                if(
+                    i === 0
+                ){
 
                     dot.classList.add(
                         "ativa"
@@ -1621,11 +1797,13 @@ async function carregarGaleria(){
         console.log(
             "Galeria carregada:",
             imagens.length,
-            "fotos."
+            "fotos"
         );
 
+    }
 
-    }catch(erro){
+
+    catch(erro){
 
         console.error(
             "Erro na galeria:",
@@ -1635,15 +1813,21 @@ async function carregarGaleria(){
 
         carrossel.innerHTML = `
 
-            <div class="galeria-erro">
+            <div
+                style="
+                width:100%;
+                height:100%;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                text-align:center;
+                padding:20px;
+                color:#d4af37;
+                "
+            >
 
-                ✨ Não foi possível carregar
-                as fotos da galeria.
-
-                <br><br>
-
-                Verifique o arquivo
-                <strong>fotos.json</strong>.
+                Não foi possível carregar
+                a galeria.
 
             </div>
 
@@ -1673,23 +1857,6 @@ function iniciarTemporizador(){
 
 
 /* =====================================================
-   REINICIAR TEMPORIZADOR
-===================================================== */
-
-function reiniciarTemporizador(){
-
-    if(
-        imagens.length > 1
-    ){
-
-        iniciarTemporizador();
-
-    }
-
-}
-
-
-/* =====================================================
    PARAR TEMPORIZADOR
 ===================================================== */
 
@@ -1709,24 +1876,30 @@ function pararTemporizador(){
 
 
 /* =====================================================
+   REINICIAR TEMPORIZADOR
+===================================================== */
+
+function reiniciarTemporizador(){
+
+    if(
+        imagens.length > 1
+    ){
+
+        iniciarTemporizador();
+
+    }
+
+}
+
+
+/* =====================================================
    TROCAR FOTO
 ===================================================== */
 
 function trocar(numero){
 
     if(
-        !imagens ||
         !imagens.length
-    ){
-
-        return;
-
-    }
-
-
-    if(
-        numero < 0 ||
-        numero >= imagens.length
     ){
 
         return;
@@ -1736,14 +1909,20 @@ function trocar(numero){
 
     imagens[indice]
         .classList
-        .remove("ativo");
+        .remove(
+            "ativo"
+        );
 
 
-    if(bolinhas[indice]){
+    if(
+        bolinhas[indice]
+    ){
 
         bolinhas[indice]
             .classList
-            .remove("ativa");
+            .remove(
+                "ativa"
+            );
 
     }
 
@@ -1754,14 +1933,20 @@ function trocar(numero){
 
     imagens[indice]
         .classList
-        .add("ativo");
+        .add(
+            "ativo"
+        );
 
 
-    if(bolinhas[indice]){
+    if(
+        bolinhas[indice]
+    ){
 
         bolinhas[indice]
             .classList
-            .add("ativa");
+            .add(
+                "ativa"
+            );
 
     }
 
@@ -1775,7 +1960,6 @@ function trocar(numero){
 function proxima(){
 
     if(
-        !imagens ||
         !imagens.length
     ){
 
@@ -1799,7 +1983,6 @@ function proxima(){
 function anterior(){
 
     if(
-        !imagens ||
         !imagens.length
     ){
 
@@ -1817,7 +2000,7 @@ function anterior(){
 
 
 /* =====================================================
-   DESLIZAR COM O DEDO
+   ARRASTAR COM DEDO
 ===================================================== */
 
 let inicioX = 0;
@@ -1867,6 +2050,7 @@ carrossel.addEventListener(
 
         }
 
+
         else if(
             distancia > 50
         ){
@@ -1888,16 +2072,19 @@ carrossel.addEventListener(
    ARRASTAR COM MOUSE
 ===================================================== */
 
-let mousePressionado = false;
+let mousePressionado =
+    false;
 
-let mouseInicioX = 0;
+let mouseInicioX =
+    0;
 
 
 carrossel.addEventListener(
     "mousedown",
     evento => {
 
-        mousePressionado = true;
+        mousePressionado =
+            true;
 
         mouseInicioX =
             evento.clientX;
@@ -1910,14 +2097,17 @@ carrossel.addEventListener(
     "mouseup",
     evento => {
 
-        if(!mousePressionado){
+        if(
+            !mousePressionado
+        ){
 
             return;
 
         }
 
 
-        mousePressionado = false;
+        mousePressionado =
+            false;
 
 
         const distancia =
@@ -1934,6 +2124,7 @@ carrossel.addEventListener(
             reiniciarTemporizador();
 
         }
+
 
         else if(
             distancia > 50
@@ -1953,7 +2144,8 @@ carrossel.addEventListener(
     "mouseleave",
     () => {
 
-        mousePressionado = false;
+        mousePressionado =
+            false;
 
     }
 );
@@ -1997,7 +2189,6 @@ if(
                         console.log(
                             "Bia Nails PWA ativo"
                         );
-
 
                         console.log(
                             "Service Worker:",
