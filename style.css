@@ -4,33 +4,19 @@
 
 .galeria{
 
-    position:relative;
-    z-index:2;
-
     width:95%;
+
     max-width:800px;
 
-    margin:50px auto;
+    margin:20px auto 55px;
 
     text-align:center;
 
-}
+    position:relative;
 
-
-.galeria h2{
-
-    color:#d4af37;
-
-    font-size:30px;
-
-    margin-bottom:25px;
-
-    text-shadow:
-    0 0 15px rgba(212,175,55,.7);
+    z-index:2;
 
 }
-
-
 
 .carrossel{
 
@@ -38,18 +24,25 @@
 
     width:100%;
 
-    max-width:800px;
-
-    height:450px;
+    aspect-ratio:4 / 5;
 
     overflow:hidden;
 
-    border-radius:25px;
+    border-radius:28px;
 
-    border:2px solid #d4af37;
+    border:
+    2px solid
+    #d4af37;
 
     box-shadow:
-    0 0 30px rgba(212,175,55,.5);
+    0 0 30px
+    rgba(212,175,55,.4);
+
+    background:#050505;
+
+    touch-action:pan-y;
+
+    cursor:grab;
 
 }
 
@@ -153,11 +146,11 @@
 
 /* TESTE GALERIA */
 
-.galeria {
-    width:95%;
-    max-width:800px;
-    margin:50px auto;
-    text-align:center;
+.galeria h2,
+.tabela-titulo{
+
+    font-size:28px;
+
 }
 
 
@@ -202,5 +195,69 @@
 .carrossel img.ativo {
 
     opacity:1;
+
+}
+
+/* =====================================================
+   BRILHO DOURADO DOS TÍTULOS
+===================================================== */
+
+.galeria h2,
+.tabela-titulo{
+
+    color:#d4af37;
+
+    font-size:32px;
+
+    margin-top:15px;
+
+    margin-bottom:25px;
+
+    text-shadow:
+        0 0 8px rgba(212,175,55,.7),
+        0 0 18px rgba(212,175,55,.6),
+        0 0 30px rgba(212,175,55,.4);
+
+    animation:
+        brilho-texto
+        3s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* =====================================================
+   PULSAÇÃO SOMENTE DAS LETRAS
+===================================================== */
+
+@keyframes brilho-texto{
+
+    0%{
+
+        text-shadow:
+            0 0 6px rgba(212,175,55,.5),
+            0 0 12px rgba(212,175,55,.4),
+            0 0 20px rgba(212,175,55,.2);
+
+    }
+
+    50%{
+
+        text-shadow:
+            0 0 10px rgba(212,175,55,.9),
+            0 0 22px rgba(212,175,55,.8),
+            0 0 38px rgba(212,175,55,.6);
+
+    }
+
+    100%{
+
+        text-shadow:
+            0 0 6px rgba(212,175,55,.5),
+            0 0 12px rgba(212,175,55,.4),
+            0 0 20px rgba(212,175,55,.2);
+
+    }
 
 }

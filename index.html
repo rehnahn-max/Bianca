@@ -364,20 +364,194 @@ body{
 
 
 /* =====================================================
-   TÍTULO
+   GALERIA
 ===================================================== */
 
-.container h1{
+.galeria{
 
-    font-size:42px;
+    width:98%;
+
+    max-width:900px;
+
+    margin:20px auto 55px;
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+.galeria h2{
 
     color:#d4af37;
 
-    margin-bottom:35px;
+    font-size:30px;
+
+    margin-bottom:25px;
 
     text-shadow:
-    0 0 15px rgba(212,175,55,.6),
-    0 0 30px rgba(212,175,55,.3);
+    0 0 15px
+    rgba(212,175,55,.6);
+
+}
+
+
+/* =====================================================
+   CARROSSEL MAIOR
+===================================================== */
+
+.carrossel{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:4 / 5;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    border:
+    2px solid
+    #d4af37;
+
+    box-shadow:
+    0 0 30px
+    rgba(212,175,55,.4);
+
+    background:#050505;
+
+    touch-action:pan-y;
+
+    cursor:grab;
+
+}
+
+
+.carrossel:active{
+
+    cursor:grabbing;
+
+}
+
+
+.carrossel img{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:50%;
+    height:50%;
+
+    object-fit:contain;
+
+    opacity:0;
+
+    transition:
+    opacity .5s ease;
+
+    display:block;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+    pointer-events:none;
+
+}
+
+
+.carrossel img.ativo{
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   ERRO GALERIA
+===================================================== */
+
+.galeria-erro{
+
+    padding:30px 15px;
+
+    color:#d4af37;
+
+    font-size:16px;
+
+    text-align:center;
+
+}
+
+
+/* =====================================================
+   BOLINHAS
+===================================================== */
+
+.bolinhas{
+
+    margin-top:15px;
+
+}
+
+
+.bolinhas span{
+
+    display:inline-block;
+
+    width:10px;
+    height:10px;
+
+    margin:5px;
+
+    border-radius:50%;
+
+    background:#555;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.bolinhas span.ativa{
+
+    background:#d4af37;
+
+    box-shadow:
+    0 0 10px
+    #d4af37;
+
+    transform:scale(1.2);
+
+}
+
+
+/* =====================================================
+   TÍTULO TABELA
+===================================================== */
+
+.tabela-titulo{
+
+    color:#d4af37;
+
+    font-size:30px;
+
+    margin-top:15px;
+
+    margin-bottom:25px;
+
+    text-shadow:
+    0 0 15px
+    rgba(212,175,55,.6);
 
     animation:
     pulse-glow
@@ -398,37 +572,48 @@ body{
 
     justify-content:center;
 
-    margin-top:30px;
+    margin-top:20px;
 
 }
 
 
 table{
+
     width:95%;
+
     max-width:800px;
 
     border-collapse:separate;
+
     border-spacing:0;
 
     background:#000;
 
-    border:2px solid #d4af37;
+    border:2px solid;
 
-    border-radius:25px;
+    border-image:
+    linear-gradient(
+        45deg,
+        #d4af37,
+        #f5d76e
+    ) 1;
+
+    border-radius:20px;
 
     overflow:hidden;
 
     backdrop-filter:blur(4px);
 
     box-shadow:
-        0 0 30px
-        rgba(212,175,55,.4);
+    0 0 30px
+    rgba(212,175,55,.3);
 
     animation:
-        pulse-glow
-        4s
-        ease-in-out
-        infinite;
+    pulse-glow
+    4s
+    ease-in-out
+    infinite;
+
 }
 
 
@@ -649,210 +834,6 @@ tr:last-child td{
 
 
 /* =====================================================
-   TÍTULO TABELA
-===================================================== */
-
-.tabela-titulo{
-
-    color:#d4af37;
-
-    font-size:28px;
-
-    margin-top:40px;
-
-    margin-bottom:20px;
-
-    text-shadow:
-    0 0 15px
-    rgba(212,175,55,.6);
-
-    animation:
-    pulse-glow
-    3s
-    ease-in-out
-    infinite;
-
-}
-
-
-/* =====================================================
-   GALERIA
-===================================================== */
-
-.galeria{
-
-    width:95%;
-
-    max-width:800px;
-
-    margin:50px auto;
-
-    text-align:center;
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-
-.galeria h2{
-
-    color:#d4af37;
-
-    font-size:28px;
-
-    margin-bottom:25px;
-
-    text-shadow:
-    0 0 15px
-    rgba(212,175,55,.6);
-
-}
-
-
-/* =====================================================
-   CARROSSEL
-===================================================== */
-
-.carrossel{
-
-    position:relative;
-
-    width:100%;
-
-    aspect-ratio:4 / 5;
-
-    overflow:hidden;
-
-    border-radius:25px;
-
-    border:
-    2px solid
-    #d4af37;
-
-    box-shadow:
-    0 0 30px
-    rgba(212,175,55,.4);
-
-    background:#050505;
-
-    /*
-     * Impede o navegador de interpretar
-     * o arrastar como scroll da página.
-     */
-
-    touch-action:pan-y;
-
-    cursor:grab;
-
-}
-
-
-.carrossel:active{
-
-    cursor:grabbing;
-
-}
-
-
-.carrossel img{
-
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    opacity:0;
-
-    transition:
-    opacity .5s ease;
-
-    display:block;
-
-    user-select:none;
-
-    -webkit-user-drag:none;
-
-    pointer-events:none;
-
-}
-
-
-.carrossel img.ativo{
-
-    opacity:1;
-
-}
-
-
-/* =====================================================
-   ERRO DE IMAGEM
-===================================================== */
-
-.galeria-erro{
-
-    padding:30px 15px;
-
-    color:#d4af37;
-
-    font-size:16px;
-
-    text-align:center;
-
-}
-
-
-/* =====================================================
-   BOLINHAS
-===================================================== */
-
-.bolinhas{
-
-    margin-top:15px;
-
-}
-
-
-.bolinhas span{
-
-    display:inline-block;
-
-    width:10px;
-    height:10px;
-
-    margin:5px;
-
-    border-radius:50%;
-
-    background:#555;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-
-.bolinhas span.ativa{
-
-    background:#d4af37;
-
-    box-shadow:
-    0 0 10px
-    #d4af37;
-
-    transform:scale(1.2);
-
-}
-
-
-/* =====================================================
    RODAPÉ
 ===================================================== */
 
@@ -879,14 +860,45 @@ footer{
 
     .container{
 
-        padding-top:20px;
+        padding-top:10px;
 
     }
 
 
-    .container h1{
+    .galeria{
 
-        font-size:32px;
+        width:96%;
+
+        margin-top:10px;
+
+        margin-bottom:45px;
+
+    }
+
+
+    .galeria h2{
+
+        font-size:24px;
+
+        margin-bottom:20px;
+
+    }
+
+
+    .carrossel{
+
+        aspect-ratio:4 / 5;
+
+        border-radius:24px;
+
+    }
+
+
+    .tabela-titulo{
+
+        font-size:24px;
+
+        margin-top:10px;
 
     }
 
@@ -927,26 +939,12 @@ footer{
     }
 
 
-    .tabela-titulo{
-
-        font-size:24px;
-
-    }
-
-
     .agendar-btn{
 
         padding:
         8px 14px;
 
         font-size:12px;
-
-    }
-
-
-    .galeria h2{
-
-        font-size:24px;
 
     }
 
@@ -1003,7 +1001,36 @@ footer{
 
 
 <!-- =====================================================
-     CONTEÚDO
+     GALERIA — AGORA PRIMEIRO
+===================================================== -->
+
+<section class="galeria">
+
+    <h2>
+
+        ✨ Conheça meu trabalho ✨
+
+    </h2>
+
+
+    <div
+        class="carrossel"
+        id="carrossel">
+
+    </div>
+
+
+    <div
+        class="bolinhas"
+        id="bolinhas">
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TABELA DE PREÇOS — AGORA ABAIXO DA GALERIA
 ===================================================== -->
 
 <div class="container">
@@ -1015,10 +1042,6 @@ footer{
 
     </h1>
 
-
-    <!-- =================================================
-         TABELA
-    ================================================== -->
 
     <div class="table-wrapper">
 
@@ -1244,35 +1267,6 @@ footer{
 
 
 <!-- =====================================================
-     GALERIA
-===================================================== -->
-
-<section class="galeria">
-
-    <h2>
-
-        ✨ Conheça meu trabalho ✨
-
-    </h2>
-
-
-    <div
-        class="carrossel"
-        id="carrossel">
-
-    </div>
-
-
-    <div
-        class="bolinhas"
-        id="bolinhas">
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
      RODAPÉ
 ===================================================== -->
 
@@ -1324,7 +1318,7 @@ function agendar(servico){
 
 
 /* =====================================================
-   PARTÍCULAS DOURADAS
+   PARTÍCULAS
 ===================================================== */
 
 const particlesContainer =
@@ -1496,10 +1490,6 @@ async function carregarGaleria(){
                 let nomeFoto =
                     String(foto).trim();
 
-
-                /*
-                 * Fotos estão na raiz.
-                 */
 
                 if(
                     !nomeFoto.startsWith("./") &&
@@ -1828,7 +1818,6 @@ function anterior(){
 
 /* =====================================================
    DESLIZAR COM O DEDO
-   ANDROID / IPHONE
 ===================================================== */
 
 let inicioX = 0;
@@ -1868,10 +1857,6 @@ carrossel.addEventListener(
             fimX - inicioX;
 
 
-        /*
-         * Deslizou para a esquerda
-         */
-
         if(
             distancia < -50
         ){
@@ -1881,11 +1866,6 @@ carrossel.addEventListener(
             reiniciarTemporizador();
 
         }
-
-
-        /*
-         * Deslizou para a direita
-         */
 
         else if(
             distancia > 50
@@ -1906,7 +1886,6 @@ carrossel.addEventListener(
 
 /* =====================================================
    ARRASTAR COM MOUSE
-   COMPUTADOR
 ===================================================== */
 
 let mousePressionado = false;
@@ -1955,7 +1934,6 @@ carrossel.addEventListener(
             reiniciarTemporizador();
 
         }
-
 
         else if(
             distancia > 50
