@@ -146,7 +146,7 @@
 
 /* TESTE GALERIA */
 
-.galeria h2,
+.galeria h3,
 .tabela-titulo{
 
     font-size:28px;
@@ -223,6 +223,18 @@
         3s
         ease-in-out
         infinite;
+
+}
+
+.tabela-titulo{
+
+    display:block;
+
+    background:transparent;
+
+    box-shadow:none;
+
+    border:none;
 
 }
 
