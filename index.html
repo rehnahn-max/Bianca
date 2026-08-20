@@ -43,6 +43,7 @@
 ===================================================== */
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -51,6 +52,7 @@
 
     font-style:italic;
     font-weight:700;
+
 }
 
 
@@ -402,31 +404,42 @@ body{
 
 
 table{
+
     width:95%;
+
     max-width:800px;
 
     border-collapse:separate;
+
     border-spacing:0;
 
     background:#000;
 
-    border:2px solid #d4af37;
+    border:2px solid;
 
-    border-radius:25px;
+    border-image:
+    linear-gradient(
+        45deg,
+        #d4af37,
+        #f5d76e
+    ) 1;
+
+    border-radius:20px;
 
     overflow:hidden;
 
     backdrop-filter:blur(4px);
 
     box-shadow:
-        0 0 30px
-        rgba(212,175,55,.4);
+    0 0 30px
+    rgba(212,175,55,.3);
 
     animation:
-        pulse-glow
-        4s
-        ease-in-out
-        infinite;
+    pulse-glow
+    4s
+    ease-in-out
+    infinite;
+
 }
 
 
@@ -687,6 +700,10 @@ tr:last-child td{
 
     text-align:center;
 
+    position:relative;
+
+    z-index:2;
+
 }
 
 
@@ -729,6 +746,24 @@ tr:last-child td{
     0 0 30px
     rgba(212,175,55,.4);
 
+    background:#050505;
+
+    /*
+     * Impede o navegador de interpretar
+     * o arrastar como scroll da página.
+     */
+
+    touch-action:pan-y;
+
+    cursor:grab;
+
+}
+
+
+.carrossel:active{
+
+    cursor:grabbing;
+
 }
 
 
@@ -749,12 +784,37 @@ tr:last-child td{
     transition:
     opacity .5s ease;
 
+    display:block;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+    pointer-events:none;
+
 }
 
 
 .carrossel img.ativo{
 
     opacity:1;
+
+}
+
+
+/* =====================================================
+   ERRO DE IMAGEM
+===================================================== */
+
+.galeria-erro{
+
+    padding:30px 15px;
+
+    color:#d4af37;
+
+    font-size:16px;
+
+    text-align:center;
 
 }
 
@@ -960,10 +1020,10 @@ footer{
 <div class="container">
 
 
-    <!-- TÍTULO -->
-
     <h1 class="tabela-titulo">
+
         ✨ Tabela de Valores ✨
+
     </h1>
 
 
@@ -974,6 +1034,7 @@ footer{
     <div class="table-wrapper">
 
         <table>
+
 
             <tr>
 
@@ -1184,6 +1245,7 @@ footer{
 
             </tr>
 
+
         </table>
 
     </div>
@@ -1193,25 +1255,29 @@ footer{
 
 
 <!-- =====================================================
-     GALERIA DE TRABALHOS
+     GALERIA
 ===================================================== -->
 
 <section class="galeria">
 
     <h2>
+
         ✨ Conheça meu trabalho ✨
+
     </h2>
 
 
     <div
         class="carrossel"
         id="carrossel">
+
     </div>
 
 
     <div
         class="bolinhas"
         id="bolinhas">
+
     </div>
 
 </section>
@@ -1273,7 +1339,9 @@ function agendar(servico){
 ===================================================== */
 
 const particlesContainer =
-    document.getElementById("particles");
+    document.getElementById(
+        "particles"
+    );
 
 
 function criarParticula(){
@@ -1330,7 +1398,7 @@ function criarParticula(){
 
         particle.remove();
 
-    }, duracao * 1000);
+    }, (duracao + 5) * 1000);
 
 }
 
@@ -1349,7 +1417,7 @@ for(let i = 0; i < 15; i++){
 
 
 /* =====================================================
-   GALERIA — CARREGA FOTOS DO JSON
+   GALERIA
 ===================================================== */
 
 let imagens = [];
@@ -1358,35 +1426,14 @@ let bolinhas = [];
 
 let indice = 0;
 
-let intervalo;
+let intervalo = null;
 
 
 /* =====================================================
-   BUSCAR FOTOS
+   CARREGAR FOTOS.JSON
 ===================================================== */
 
-fetch(
-    "fotos.json?versao="
-    + Date.now()
-)
-
-.then(resposta => {
-
-    if(!resposta.ok){
-
-        throw new Error(
-            "Não foi possível carregar fotos.json"
-        );
-
-    }
-
-    return resposta.json();
-
-})
-
-
-.then(dados => {
-
+async function carregarGaleria(){
 
     const carrossel =
         document.getElementById(
@@ -1400,103 +1447,286 @@ fetch(
         );
 
 
-    dados.fotos.forEach(
-        (foto, i) => {
+    try{
 
-
-            const img =
-                document.createElement(
-                    "img"
-                );
-
-
-            img.src = foto;
-
-
-            img.alt =
-                "Trabalho Bia Nails";
-
-
-            if(i === 0){
-
-                img.classList.add(
-                    "ativo"
-                );
-
-            }
-
-
-            carrossel.appendChild(
-                img
-            );
-
-
-            const dot =
-                document.createElement(
-                    "span"
-                );
-
-
-            if(i === 0){
-
-                dot.classList.add(
-                    "ativa"
-                );
-
-            }
-
-
-            dot.addEventListener(
-                "click",
-                () => {
-
-                    trocar(i);
-
+        const resposta =
+            await fetch(
+                "./fotos.json?v="
+                + Date.now(),
+                {
+                    cache:"no-store"
                 }
             );
 
 
-            dots.appendChild(
-                dot
+        if(!resposta.ok){
+
+            throw new Error(
+                "Não foi possível carregar fotos.json"
             );
 
         }
-    );
 
 
-    imagens =
-        document.querySelectorAll(
-            ".carrossel img"
-        );
+        const dados =
+            await resposta.json();
 
 
-    bolinhas =
-        document.querySelectorAll(
-            ".bolinhas span"
-        );
+        if(
+            !dados ||
+            !Array.isArray(dados.fotos)
+        ){
 
-
-    if(imagens.length > 1){
-
-        intervalo =
-            setInterval(
-                proxima,
-                4000
+            throw new Error(
+                "O fotos.json não possui uma lista de fotos válida."
             );
+
+        }
+
+
+        if(
+            dados.fotos.length === 0
+        ){
+
+            throw new Error(
+                "Nenhuma foto foi encontrada."
+            );
+
+        }
+
+
+        carrossel.innerHTML = "";
+
+        dots.innerHTML = "";
+
+
+        dados.fotos.forEach(
+            (foto, i) => {
+
+
+                let nomeFoto =
+                    String(foto).trim();
+
+
+                /*
+                 * Fotos estão na raiz.
+                 */
+
+                if(
+                    !nomeFoto.startsWith("./") &&
+                    !nomeFoto.startsWith("/") &&
+                    !nomeFoto.startsWith("http")
+                ){
+
+                    nomeFoto =
+                        "./"
+                        + nomeFoto;
+
+                }
+
+
+                const img =
+                    document.createElement(
+                        "img"
+                    );
+
+
+                img.src =
+                    nomeFoto;
+
+
+                img.alt =
+                    "Trabalho Bia Nails";
+
+
+                img.draggable =
+                    false;
+
+
+                img.loading =
+                    i === 0
+                    ? "eager"
+                    : "lazy";
+
+
+                img.decoding =
+                    "async";
+
+
+                if(i === 0){
+
+                    img.classList.add(
+                        "ativo"
+                    );
+
+                }
+
+
+                img.addEventListener(
+                    "error",
+                    () => {
+
+                        console.error(
+                            "Erro ao carregar:",
+                            nomeFoto
+                        );
+
+                    }
+                );
+
+
+                carrossel.appendChild(
+                    img
+                );
+
+
+                const dot =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                if(i === 0){
+
+                    dot.classList.add(
+                        "ativa"
+                    );
+
+                }
+
+
+                dot.addEventListener(
+                    "click",
+                    () => {
+
+                        trocar(i);
+
+                        reiniciarTemporizador();
+
+                    }
+                );
+
+
+                dots.appendChild(
+                    dot
+                );
+
+            }
+        );
+
+
+        imagens =
+            carrossel.querySelectorAll(
+                "img"
+            );
+
+
+        bolinhas =
+            dots.querySelectorAll(
+                "span"
+            );
+
+
+        indice = 0;
+
+
+        if(
+            imagens.length > 1
+        ){
+
+            iniciarTemporizador();
+
+        }
+
+
+        console.log(
+            "Galeria carregada:",
+            imagens.length,
+            "fotos."
+        );
+
+
+    }catch(erro){
+
+        console.error(
+            "Erro na galeria:",
+            erro
+        );
+
+
+        carrossel.innerHTML = `
+
+            <div class="galeria-erro">
+
+                ✨ Não foi possível carregar
+                as fotos da galeria.
+
+                <br><br>
+
+                Verifique o arquivo
+                <strong>fotos.json</strong>.
+
+            </div>
+
+        `;
 
     }
 
-})
+}
 
 
-.catch(erro => {
+/* =====================================================
+   TEMPORIZADOR — 8 SEGUNDOS
+===================================================== */
 
-    console.error(
-        "Erro ao carregar galeria:",
-        erro
-    );
+function iniciarTemporizador(){
 
-});
+    pararTemporizador();
+
+
+    intervalo =
+        setInterval(
+            proxima,
+            8000
+        );
+
+}
+
+
+/* =====================================================
+   REINICIAR TEMPORIZADOR
+===================================================== */
+
+function reiniciarTemporizador(){
+
+    if(
+        imagens.length > 1
+    ){
+
+        iniciarTemporizador();
+
+    }
+
+}
+
+
+/* =====================================================
+   PARAR TEMPORIZADOR
+===================================================== */
+
+function pararTemporizador(){
+
+    if(intervalo){
+
+        clearInterval(
+            intervalo
+        );
+
+        intervalo = null;
+
+    }
+
+}
 
 
 /* =====================================================
@@ -1505,7 +1735,20 @@ fetch(
 
 function trocar(numero){
 
-    if(!imagens.length){
+    if(
+        !imagens ||
+        !imagens.length
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        numero < 0 ||
+        numero >= imagens.length
+    ){
 
         return;
 
@@ -1552,7 +1795,10 @@ function trocar(numero){
 
 function proxima(){
 
-    if(!imagens.length){
+    if(
+        !imagens ||
+        !imagens.length
+    ){
 
         return;
 
@@ -1568,6 +1814,199 @@ function proxima(){
 
 
 /* =====================================================
+   FOTO ANTERIOR
+===================================================== */
+
+function anterior(){
+
+    if(
+        !imagens ||
+        !imagens.length
+    ){
+
+        return;
+
+    }
+
+
+    trocar(
+        (indice - 1 + imagens.length)
+        % imagens.length
+    );
+
+}
+
+
+/* =====================================================
+   DESLIZAR COM O DEDO
+   ANDROID / IPHONE
+===================================================== */
+
+let inicioX = 0;
+
+let fimX = 0;
+
+
+const carrossel =
+    document.getElementById(
+        "carrossel"
+    );
+
+
+carrossel.addEventListener(
+    "touchstart",
+    evento => {
+
+        inicioX =
+            evento.touches[0].clientX;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+carrossel.addEventListener(
+    "touchend",
+    evento => {
+
+        fimX =
+            evento.changedTouches[0].clientX;
+
+
+        const distancia =
+            fimX - inicioX;
+
+
+        /*
+         * Deslizou para a esquerda
+         */
+
+        if(
+            distancia < -50
+        ){
+
+            proxima();
+
+            reiniciarTemporizador();
+
+        }
+
+
+        /*
+         * Deslizou para a direita
+         */
+
+        else if(
+            distancia > 50
+        ){
+
+            anterior();
+
+            reiniciarTemporizador();
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =====================================================
+   ARRASTAR COM MOUSE
+   COMPUTADOR
+===================================================== */
+
+let mousePressionado = false;
+
+let mouseInicioX = 0;
+
+
+carrossel.addEventListener(
+    "mousedown",
+    evento => {
+
+        mousePressionado = true;
+
+        mouseInicioX =
+            evento.clientX;
+
+    }
+);
+
+
+carrossel.addEventListener(
+    "mouseup",
+    evento => {
+
+        if(!mousePressionado){
+
+            return;
+
+        }
+
+
+        mousePressionado = false;
+
+
+        const distancia =
+            evento.clientX
+            - mouseInicioX;
+
+
+        if(
+            distancia < -50
+        ){
+
+            proxima();
+
+            reiniciarTemporizador();
+
+        }
+
+
+        else if(
+            distancia > 50
+        ){
+
+            anterior();
+
+            reiniciarTemporizador();
+
+        }
+
+    }
+);
+
+
+carrossel.addEventListener(
+    "mouseleave",
+    () => {
+
+        mousePressionado = false;
+
+    }
+);
+
+
+/* =====================================================
+   INICIAR GALERIA
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        carregarGaleria();
+
+    }
+);
+
+
+/* =====================================================
    SERVICE WORKER / PWA
 ===================================================== */
 
@@ -1580,12 +2019,10 @@ if(
         "load",
         () => {
 
-
             navigator.serviceWorker
                 .register(
-                    "service-worker.js"
+                    "./service-worker.js"
                 )
-
 
                 .then(
                     registro => {
@@ -1603,7 +2040,6 @@ if(
                     }
                 )
 
-
                 .catch(
                     erro => {
 
@@ -1619,7 +2055,6 @@ if(
     );
 
 }
-
 
 </script>
 
