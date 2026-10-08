@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#050816">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="ESSENCE Nails">
 <title>ESSENCE Nails | Onde a beleza começa nas mãos</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Open Sans',sans-serif;font-style:italic;font-weight:700}
@@ -20,33 +18,28 @@ html{width:100%;overflow-x:hidden}body{width:100%;min-height:100vh;background:#0
 @keyframes pulse-glow{0%,100%{box-shadow:0 0 15px rgba(212,175,55,.35)}50%{box-shadow:0 0 30px rgba(212,175,55,.65)}}
 .banner{position:fixed;top:0;left:0;width:100%;height:100vh;background:url("wallpaperbackspace.png") no-repeat center center;background-size:cover;opacity:.35;z-index:-3}
 .golden-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 50%,rgba(212,175,55,.15) 0%,transparent 70%);pointer-events:none;z-index:-1;animation:brilho-dourado 4s ease-in-out infinite}
-.glow-left{position:fixed;left:-200px;top:50%;width:400px;height:400px;background:radial-gradient(circle,rgba(212,175,55,.2) 0%,transparent 70%);border-radius:50%;filter:blur(60px);animation:brilho-dourado 6s ease-in-out infinite;z-index:-1}
-.glow-right{position:fixed;right:-200px;bottom:50px;width:400px;height:400px;background:radial-gradient(circle,rgba(212,175,55,.15) 0%,transparent 70%);border-radius:50%;filter:blur(60px);animation:brilho-dourado 8s ease-in-out infinite;z-index:-1}
 .particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
 .particle{position:absolute;border-radius:50%;background:radial-gradient(circle,#d4af37,#f5d76e);box-shadow:0 0 10px rgba(212,175,55,.8);animation:float-up linear infinite}
-.container{position:relative;z-index:1;width:100%;max-width:840px;margin:0 auto;padding:0 20px 50px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.container{position:relative;z-index:1;width:100%;max-width:840px;margin:0 auto;padding:0 20px 50px;display:flex;flex-direction:column;align-items:center}
 .galeria{position:relative;z-index:2;width:100%;max-width:800px;margin:25px auto 45px;text-align:center}
-.galeria h2{color:#d4af37;font-size:34px;line-height:1.2;margin:0 0 22px;text-shadow:0 0 8px rgba(212,175,55,.7),0 0 18px rgba(212,175,55,.6),0 0 30px rgba(212,175,55,.4);animation:brilho-texto 3s ease-in-out infinite}
+.galeria h2{color:#d4af37;font-size:34px;margin:0 0 22px;text-shadow:0 0 8px rgba(212,175,55,.7),0 0 18px rgba(212,175,55,.6),0 0 30px rgba(212,175,55,.4);animation:brilho-texto 3s ease-in-out infinite}
 .carrossel{position:relative;width:100%;height:500px;overflow:hidden;border:2px solid #d4af37;border-radius:26px;background:#050505;box-shadow:0 0 30px rgba(212,175,55,.4);cursor:grab}
 .carrossel img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1s ease}
 .carrossel img.ativo{opacity:1}
 .bolinhas{width:100%;margin:16px auto 0;text-align:center}
-.bolinhas span{display:inline-block;width:11px;height:11px;margin:4px;border-radius:50%;background:#555;cursor:pointer;transition:.3s ease}
+.bolinhas span{display:inline-block;width:11px;height:11px;margin:4px;border-radius:50%;background:#555;cursor:pointer}
 .bolinhas span.ativa{background:#d4af37;box-shadow:0 0 10px #d4af37;transform:scale(1.2)}
-.tabela-titulo{display:block;width:100%;color:#d4af37;font-size:34px;line-height:1.2;text-align:center;margin:0 0 25px;text-shadow:0 0 8px rgba(212,175,55,.7),0 0 18px rgba(212,175,55,.6),0 0 30px rgba(212,175,55,.4);animation:brilho-texto 3s ease-in-out infinite}
-.table-wrapper{width:100%;max-width:800px;display:flex;justify-content:center;align-items:center;margin:0 auto}
-table{width:100%;max-width:800px;margin:0 auto;border-collapse:separate;border-spacing:0;background:#000;border:2px solid #d4af37;border-radius:20px;overflow:hidden;box-shadow:0 0 25px rgba(212,175,55,.3);animation:pulse-glow 4s ease-in-out infinite}
+.tabela-titulo{display:block;width:100%;color:#d4af37;font-size:34px;text-align:center;margin:0 0 25px;text-shadow:0 0 8px rgba(212,175,55,.7),0 0 18px rgba(212,175,55,.6),0 0 30px rgba(212,175,55,.4);animation:brilho-texto 3s ease-in-out infinite}
+.table-wrapper{width:100%;max-width:800px;display:flex;justify-content:center;margin:0 auto}
+table{width:100%;max-width:800px;margin:0 auto;border-collapse:separate;border-spacing:0;background:#000;border:2px solid #d4af37;border-radius:20px;overflow:hidden;box-shadow:0 0 25px rgba(212,175,55,.3)}
 th,td{padding:15px;border-bottom:1px solid rgba(255,215,0,.3);text-align:center}
-tr:hover{background:rgba(212,175,55,.05)}
-.agendar-btn{display:inline-block;background:linear-gradient(45deg,#d4af37,#f7e08a);color:#000;padding:10px 18px;border-radius:30px;text-decoration:none;transition:.3s ease;box-shadow:0 0 15px rgba(212,175,55,.5);font-weight:bold;border:none;cursor:pointer}
-.agendar-btn:hover{transform:scale(1.08);box-shadow:0 0 30px rgba(212,175,55,1)}
-footer{text-align:center;padding:30px;color:#aaa;position:relative;z-index:1}
-@media(max-width:768px){.carrossel{height:420px}.tabela-titulo,.galeria h2{font-size:29px}th,td{font-size:13px;padding:10px}.agendar-btn{padding:8px 14px;font-size:12px}}
-@media(max-width:480px){.carrossel{height:350px}.tabela-titulo,.galeria h2{font-size:25px}th,td{font-size:12px;padding:8px 5px}.agendar-btn{padding:7px 10px;font-size:11px}}
+.agendar-btn{display:inline-block;background:linear-gradient(45deg,#d4af37,#f7e08a);color:#000;padding:10px 18px;border-radius:30px;border:none;cursor:pointer;box-shadow:0 0 15px rgba(212,175,55,.5)}
+footer{text-align:center;padding:30px;color:#aaa;z-index:1}
+@media(max-width:480px){.carrossel{height:350px}.galeria h2,.tabela-titulo{font-size:25px}}
 </style>
 </head>
 <body>
-<div class="banner"></div><div class="golden-overlay"></div><div class="glow-left"></div><div class="glow-right"></div><div class="particles" id="particles"></div>
+<div class="banner"></div><div class="golden-overlay"></div><div class="particles" id="particles"></div>
 <section class="galeria"><h2>✨ Conheça meu trabalho ✨</h2><div class="carrossel" id="carrossel"></div><div class="bolinhas" id="bolinhas"></div></section>
 <div class="container"><h1 class="tabela-titulo">✨ Tabela de Valores ✨</h1><div class="table-wrapper"><table>
 <tr><td>Modelos</td><td>R$55</td><td><button class="agendar-btn" onclick="agendar('Modelos - R$55')">Agendar</button></td></tr>
@@ -63,32 +56,91 @@ footer{text-align:center;padding:30px;color:#aaa;position:relative;z-index:1}
 <footer>© 2026 ESSENCE Nails<br>Onde a beleza começa nas mãos ✨</footer>
 <script>
 function agendar(s){const n="+5531972072814";const m=`Olá! Gostaria de agendar: ${s} na ESSENCE Nails`;window.open("https://wa.me/"+n+"?text="+encodeURIComponent(m),"_blank")}
-const particlesContainer=document.getElementById("particles");function criarParticula(){const p=document.createElement("div");p.className="particle";const t=Math.random()*6+2;p.style.width=t+"px";p.style.height=t+"px";p.style.left=Math.random()*window.innerWidth+"px";p.style.bottom="-10px";const d=Math.random()*15+10;p.style.animationDuration=d+"s";p.style.animationDelay=Math.random()*5+"s";particlesContainer.appendChild(p);setTimeout(()=>{p.remove()},(d+5)*1000)}setInterval(criarParticula,500);for(let i=0;i<15;i++){criarParticula()}
-let imagens=[],bolinhas=[],indice=0,intervalo=null;async function carregarGaleria(){const carrossel=document.getElementById("carrossel");const dots=document.getElementById("bolinhas");try{const r=await fetch("./fotos.json?v="+Date.now(),{cache:"no-store"});if(!r.ok)throw new Error("fotos.json");const dados=await r.json();carrossel.innerHTML="";dots.innerHTML="";dados.fotos.forEach((foto,i)=>{let caminho=String(foto).trim();if(!caminho.startsWith("./")&&!caminho.startsWith("/")&&!caminho.startsWith("http")){caminho="./"+caminho}const img=document.createElement("img");img.src=caminho;img.alt="Trabalho ESSENCE Nails";img.draggable=false;if(i===0)img.classList.add("ativo");carrossel.appendChild(img);const dot=document.createElement("span");if(i===0)dot.classList.add("ativa");dot.addEventListener("click",()=>{trocar(i);reiniciarTemporizador()});dots.appendChild(dot)});imagens=carrossel.querySelectorAll("img");bolinhas=dots.querySelectorAll("span");indice=0;if(imagens.length>1)iniciarTemporizador()}catch(e){carrossel.innerHTML=`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#d4af37;padding:20px">Não foi possível carregar a galeria.</div>`}}function iniciarTemporizador(){pararTemporizador();intervalo=setInterval(proxima,8000)}function pararTemporizador(){if(intervalo){clearInterval(intervalo);intervalo=null}}function reiniciarTemporizador(){if(imagens.length>1)iniciarTemporizador()}function trocar(n){if(!imagens.length)return;imagens[indice].classList.remove("ativo");if(bolinhas[indice])bolinhas[indice].classList.remove("ativa");indice=n;imagens[indice].classList.add("ativo");if(bolinhas[indice])bolinhas[indice].classList.add("ativa")}function proxima(){if(!imagens.length)return;trocar((indice+1)%imagens.length)}function anterior(){if(!imagens.length)return;trocar((indice-1+imagens.length)%imagens.length)}let inicioX=0,fimX=0;const carrossel=document.getElementById("carrossel");carrossel.addEventListener("touchstart",e=>{inicioX=e.touches[0].clientX},{passive:true});carrossel.addEventListener("touchend",e=>{fimX=e.changedTouches[0].clientX;const d=fimX-inicioX;if(d<-50){proxima();reiniciarTemporizador()}else if(d>50){anterior();reiniciarTemporizador()}},{passive:true});let mousePressionado=false,mouseInicioX=0;carrossel.addEventListener("mousedown",e=>{mousePressionado=true;mouseInicioX=e.clientX});carrossel.addEventListener("mouseup",e=>{if(!mousePressionado)return;mousePressionado=false;const d=e.clientX-mouseInicioX;if(d<-50){proxima();reiniciarTemporizador()}else if(d>50){anterior();reiniciarTemporizador()}});carrossel.addEventListener("mouseleave",()=>{mousePressionado=false});document.addEventListener("DOMContentLoaded",()=>{carregarGaleria()});if("serviceWorker" in navigator){
+const particlesContainer=document.getElementById("particles");function criarParticula(){const p=document.createElement("div");p.className="particle";const t=Math.random()*6+2;p.style.width=t+"px";p.style.height=t+"px";p.style.left=Math.random()*window.innerWidth+"px";p.style.bottom="-10px";const d=Math.random()*15+10;p.style.animationDuration=d+"s";p.style.animationDelay=Math.random()*5+"s";particlesContainer.appendChild(p);setTimeout(()=>{p.remove()},(d+5)*1000)}setInterval(criarParticula,500);for(let i=0;i<15;i++)criarParticula();
+
+// FOTOS PADRÃO ESSENCE - INCLUSÃO DIRETA
+const FOTOS_PADRAO = [
+  "./trabalho.jpg",
+  "./trabalho1.jpg",
+  "./trabalho2.jpg",
+  "./trabalho3.jpg",
+  "./trabalho4.jpg",
+  "./trabalho5.jpg",
+  "./trabalho6.jpg",
+  "./trabalho7.jpg",
+  "./trabalho8.jpg",
+  "./trabalho9.jpg",
+  "./trabalho10.jpg"
+];
+
+let imagens=[],bolinhas=[],indice=0,intervalo=null;
+
+function montarGaleria(lista){
+  const carrossel=document.getElementById("carrossel");
+  const dots=document.getElementById("bolinhas");
+  carrossel.innerHTML=""; dots.innerHTML="";
+  lista.forEach((foto,i)=>{
+    let caminho=String(foto).trim();
+    if(!caminho.startsWith("./") &&!caminho.startsWith("/") &&!caminho.startsWith("http")) caminho="./"+caminho;
+    const img=document.createElement("img");
+    img.src=caminho;
+    img.alt="Trabalho ESSENCE Nails";
+    img.onerror=()=>{console.log("Não achou, tentando.png:", caminho); img.src=caminho.replace(".jpg",".png");};
+    if(i===0) img.classList.add("ativo");
+    carrossel.appendChild(img);
+    const dot=document.createElement("span");
+    if(i===0) dot.classList.add("ativa");
+    dot.addEventListener("click",()=>{trocar(i);reiniciarTemporizador()});
+    dots.appendChild(dot);
+  });
+  imagens=carrossel.querySelectorAll("img");
+  bolinhas=dots.querySelectorAll("span");
+  indice=0;
+  if(imagens.length>1) iniciarTemporizador();
+}
+
+async function carregarGaleria(){
+  try{
+    const r=await fetch("./fotos.json?v="+Date.now(),{cache:"no-store"});
+    if(!r.ok) throw new Error("sem json");
+    const dados=await r.json();
+    if(dados.fotos && dados.fotos.length>0){
+      console.log("Usando fotos.json:", dados.fotos);
+      montarGaleria(dados.fotos);
+    } else {
+      throw new Error("json vazio");
+    }
+  }catch(e){
+    console.log("Usando fotos padrão trabalho.jpg:", e);
+    montarGaleria(FOTOS_PADRAO);
+  }
+}
+
+function iniciarTemporizador(){pararTemporizador();intervalo=setInterval(proxima,8000)}
+function pararTemporizador(){if(intervalo){clearInterval(intervalo);intervalo=null}}
+function reiniciarTemporizador(){if(imagens.length>1)iniciarTemporizador()}
+function trocar(n){if(!imagens.length)return;imagens[indice].classList.remove("ativo");if(bolinhas[indice])bolinhas[indice].classList.remove("ativa");indice=n;imagens[indice].classList.add("ativo");if(bolinhas[indice])bolinhas[indice].classList.add("ativa")}
+function proxima(){if(!imagens.length)return;trocar((indice+1)%imagens.length)}
+function anterior(){if(!imagens.length)return;trocar((indice-1+imagens.length)%imagens.length)}
+let inicioX=0;const carrossel=document.getElementById("carrossel");
+carrossel.addEventListener("touchstart",e=>{inicioX=e.touches[0].clientX},{passive:true});
+carrossel.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-inicioX;if(d<-50){proxima();reiniciarTemporizador()}else if(d>50){anterior();reiniciarTemporizador()}},{passive:true});
+let mousePressionado=false,mouseInicioX=0;
+carrossel.addEventListener("mousedown",e=>{mousePressionado=true;mouseInicioX=e.clientX});
+carrossel.addEventListener("mouseup",e=>{if(!mousePressionado)return;mousePressionado=false;const d=e.clientX-mouseInicioX;if(d<-50){proxima();reiniciarTemporizador()}else if(d>50){anterior();reiniciarTemporizador()}});
+document.addEventListener("DOMContentLoaded",()=>{carregarGaleria()});
+if("serviceWorker" in navigator){
   window.addEventListener("load",()=>{
     navigator.serviceWorker.register("./service-worker.js?v="+Date.now())
-      .then(reg=>{
-        console.log("ESSENCE Nails PWA ativo v2");
-        reg.onupdatefound = () => {
-          const newWorker = reg.installing;
-          newWorker.onstatechange = () => {
-            if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
-              // Nova versão encontrada, atualiza sozinho
-              newWorker.postMessage({action: 'skipWaiting'});
-              window.location.reload();
-            }
-          };
-        };
+     .then(reg=>{
+        reg.onupdatefound=()=>{
+          const nw=reg.installing;
+          nw.onstatechange=()=>{if(nw.state==='installed' && navigator.serviceWorker.controller){window.location.reload()}}
+        }
       });
   });
-  // Se detectar troca de SW, recarrega
-  let refreshing = false;
-  navigator.serviceWorker.addEventListener('controllerchange', ()=>{
-    if(!refreshing){
-      refreshing = true;
-      window.location.reload();
-    }
-  });
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{window.location.reload()});
 }
+</script>
 </body>
 </html>
