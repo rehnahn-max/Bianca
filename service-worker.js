@@ -6,7 +6,7 @@ const FILES = [
   "./icon-192.png",
   "./icon-512.png",
   "./wallpaperbackspace.png",
-  ...Array.from({ length: 10 }, (_, index) => `./trabalho${index + 1}.jpg`)
+  ...Array.from({ length: 10 }, (_, index) => `./trabalho${index + 1}.jpeg`)
 ];
 
 self.addEventListener("install", event => {
