@@ -132,7 +132,7 @@
           <a class="text-link" href="#trabalhos">Conheça meu trabalho ↓</a>
         </div>
       </div>
-      <div class="hero-picture"><img src="./trabalho5.jpg" alt="Unhas feitas pela ESSENCE Nails"></div>
+      <div class="hero-picture"><img src="./trabalho5.jpeg" alt="Unhas feitas pela ESSENCE Nails"></div>
     </section>
 
     <section class="portfolio content shell" id="trabalhos">
@@ -140,12 +140,9 @@
         <div><p class="eyebrow">PORTFÓLIO · ESSENCE NAILS</p><h2>Feito com <em>carinho.</em></h2></div>
         <p>Um olhar de perto para o que fazemos de melhor.</p>
       </div>
-./trabalho5.jpg              → ./trabalho5.jpeg
-./trabalho1.jpg              → ./trabalho1.jpeg
-`./trabalho${selected}.jpg`  → `./trabalho${selected}.jpeg`
       <div class="gallery">
         <div class="gallery-stage" id="stage" tabindex="0" aria-label="Galeria: use as setas ou deslize para trocar de foto">
-          <img id="photo" src="./trabalho1.jpg" alt="Trabalho da ESSENCE Nails 1 de 10">
+          <img id="photo" src="./trabalho1.jpeg" alt="Trabalho da ESSENCE Nails 1 de 10">
           <span class="count" id="count" aria-live="polite">01 / 10</span>
         </div>
         <div class="gallery-side">
@@ -215,7 +212,7 @@
 
     function showPhoto(index) {
       selected = ((index - 1 + 10) % 10) + 1;
-      photo.src = `./trabalho${selected}.jpg`;
+      photo.src = `./trabalho${selected}.jpeg`;
       photo.alt = `Trabalho da ESSENCE Nails ${selected} de 10`;
       count.textContent = `${String(selected).padStart(2, "0")} / 10`;
       dots.querySelectorAll("button").forEach((button, position) => {
